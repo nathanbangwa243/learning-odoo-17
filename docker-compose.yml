@@ -1,0 +1,88 @@
+version: "3.1"
+services:
+  # Service Odoo
+  odoo:
+    # Utilisation de l'image Odoo version 15.0
+    image: odoo:17
+    
+    # Nom du conteneur
+    container_name: odoo17Learning
+    
+    # Dépendance sur le service db
+    depends_on:
+      - db
+    
+    # Ports exposés
+    ports:
+      - "8069:8069"
+    
+    # Redémarrage automatique
+    restart: always
+    
+    # Commande à exécuter pour démarrer Odoo
+    command: "-u all -d learning_db --limit-time-real=100000"
+    
+    # Montage des volumes pour persister les données
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+    
+    # Variables d'environnement pour les informations de la base de données hôte
+    environment:
+      - HOST=db
+      - USER=admin
+      - PASSWORD=admin
+    
+    # Configuration des ressources pour le déploiement
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 2048M
+        reservations:
+          cpus: "0.25"
+          memory: 512M
+
+  # Service de base de données PostgreSQL
+  db:
+    # Utilisation de l'image PostgreSQL
+    image: postgres:15
+    
+    # Nom du conteneur
+    container_name: postgres_odoo17Learning
+    
+    # Ports exposés
+    ports:
+      - "5432:5432"
+    
+    # Redémarrage automatique
+    restart: always
+    
+    # Variables d'environnement pour la configuration de la base de données
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    
+    # Montage des volumes pour persister les données
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+      - odoo-db-pgdata:/var/lib/postgresql/data/pgdata
+    
+    # Configuration des ressources pour le déploiement
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 1024M
+        reservations:
+          cpus: "0.25"
+          memory: 512M
+
+# Définition des volumes
+volumes:
+  odoo-web-data:
+  odoo-db-data:
+  odoo-db-pgdata:
