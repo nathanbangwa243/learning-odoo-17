@@ -8,13 +8,13 @@ class EstateProperty(models.Model):
     _name = 'estate.property'
     _description = "ESTATE Properties"
 
-    name = fields.Text(string="Name", required=True, help="Property name")
+    name = fields.Text(string="Title", required=True, help="Property name")
 
     description = fields.Text(string="Description", help="Property description")
 
-    postcode = fields.Text(string="Post code", help="Property Post code")
+    postcode = fields.Text(string="Postcode", help="Property Post code")
 
-    date_availability = fields.Date(string="Date Availability", default=lambda self: (datetime.now() + timedelta(days=90)).strftime('%Y-%m-%d'), copy=False, help="Property Date Availability")
+    date_availability = fields.Date(string="Available From", default=lambda self: (datetime.now() + timedelta(days=90)).strftime('%Y-%m-%d'), copy=False, help="Property Date Availability")
 
     expected_price = fields.Float(string="Expected Price", required=True, help="Property Expected Price")
 
@@ -22,7 +22,7 @@ class EstateProperty(models.Model):
 
     bedrooms = fields.Integer(string="Bedrooms", default=2, help="Property Bedrooms")
 
-    living_area = fields.Integer(string="Living Area", help="Property Living Area")
+    living_area = fields.Integer(string="Living Area (sqm)", help="Property Living Area")
 
     facades = fields.Integer(string="Facades", help="Property Facades")
 
