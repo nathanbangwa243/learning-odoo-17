@@ -168,13 +168,11 @@ In our journey to understand `Odoo`, we've encountered various ways to handle `d
 
 ![Data Files XML Capture](docs/images/app-view-action.png)
 
-### Actions
+### Actions and Menus
 
 `Actions` are the `bridge` between `menus` and `models`, defining what happens when we `click` or interact with `elements` in the interface. In our `real estate` scenario, actions empower us to navigate through lists and `forms` seamlessly. ⚙️
 
 ![Action and Menu Capture](docs/images/app-real-estate.png)
-
-### Menus
 
 `Menus` in Odoo follow a `hierarchical structure`, guiding us through different `levels` of the `interface`. By defining `menus` in `XML files`, we craft an intuitive `navigation` experience for users, leading them to the heart of our application. 📂
 
