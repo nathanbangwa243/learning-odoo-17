@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+# pylint: disable=pointless-statement
+
 {
     'name': "Real Estate",
 
