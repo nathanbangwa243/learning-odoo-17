@@ -87,6 +87,11 @@
                                 </group>
 
                             </page>
+                            <page string="Offers">
+                                <group>
+                                    <field name="offer_ids" />
+                                </group>
+                            </page>
                             <page string="Other Infos">
                                 <group>
                                     <field name="salesperson_id" />
