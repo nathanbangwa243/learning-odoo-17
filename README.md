@@ -218,3 +218,48 @@ As we sculpt these `views`, remember, it's not just about aesthetics. It's about
 ### Note:
 
 We're just scratching the surface here. There's still much to explore, like `custom filters` and `grouping`. But for now, let's revel in the joy of creating `views` that make our `app shine`.
+
+## Chapter 8: Relations Between Models
+
+In our quest to build the ultimate `real estate management system`, we've journeyed through the intricacies of crafting `models` and designing intuitive `views`. Now, armed with a deeper understanding of how `views` shape user `interaction`, we venture into the realm of `model relationships`.
+
+Imagine our `real estate application` as a bustling marketplace, where properties, customers, and agents converge in a complex web of `connections`. Just as our `views` provide windows into our `data`, these `relationships` offer pathways for seamless `interactions` between different `entities`.
+
+### Many2one: 🌐
+
+In our bustling real estate marketplace, `properties` often have distinct `types`, `buyers`, and `sellers`. With `Many2one` fields, we establish clear links between these entities, enabling us to easily associate each property with its type, buyer, and seller. 
+
+![Property Types Capture](docs/images/app-types.png)
+
+![Types into Property Capture](docs/images/app-types-property.png)
+
+
+It's like building bridges that `connect` different parts of our marketplace, ensuring smooth navigation for users.
+
+
+### Many2many: 🔗
+
+But our marketplace isn't just about individual properties; it's about the stories they tell. With `Many2many relationships`, we enrich these stories by tagging properties with descriptive labels like 'cozy' or 'renovated.' 
+
+![Property Tags Capture](docs/images/app-tags.png)
+
+![Tags into Property Capture](docs/images/app-types-property.png)
+
+
+It's like adding layers of depth to our marketplace, allowing users to explore properties based on unique characteristics.
+
+### One2many: 🔄
+
+And what's a marketplace without `offers`? With `One2many relationships`, we capture the dynamic exchange of offers between buyers and sellers. Each property can now boast a gallery of offers, each representing a potential transaction waiting to unfold. 
+
+![Offers into Property Capture](docs/images/app-offer.png)
+
+It's like opening a window into the negotiation process, where every offer adds to the intrigue of our marketplace.
+
+As we weave these `relationships` into the fabric of our `real estate module`, we create a dynamic ecosystem where data flows seamlessly between entities. It's not just about organizing information; it's about fostering meaningful connections that bring our marketplace to life.
+
+And so, armed with the knowledge of `model relationships`, we embark on the next phase of our journey, eager to explore the boundless possibilities that await us in the realm of `Odoo`.
+
+*Notes:*
+> Because a `One2many` is a `virtual` relationship, there must be a `Many2one` field defined in the `comodel`.
+
