@@ -47,3 +47,6 @@ class EstateProperty(models.Model):
     
     # links
     property_type_id = fields.Many2one('estate.property.type', string="Type")
+
+    salesperson_id = fields.Many2one('res.users', string='Salesman', default=lambda self: self.env.user, help="Salesperson")
+    buyer_id = fields.Many2one('res.partner', string="Buyer", copy=False, help="Buyer Person")
