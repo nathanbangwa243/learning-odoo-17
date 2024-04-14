@@ -8,7 +8,7 @@ class EstateProperty(models.Model):
     _name = 'estate.property'
     _description = "ESTATE Properties"
 
-    name = fields.Text(string="Title", required=True, help="Property name")
+    name = fields.Char(string="Title", required=True, help="Property name")
 
     description = fields.Text(string="Description", help="Property description")
 
@@ -44,3 +44,6 @@ class EstateProperty(models.Model):
         selection=[("New", "New"), ("Offer Received", "Offer Received"), ("Offer Accepted", "Offer Accepted"), ("Sold", "Sold"), ("Canceled", "Canceled")],
         default="New",
         help="State of the property advertisement")
+    
+    # links
+    property_type_id = fields.Many2one('estate.property.type', string="Type")
