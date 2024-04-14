@@ -1,18 +1,4 @@
 <odoo>
-    <!-- Estate Property Action -->
-    <record id="estate_property_action" model="ir.actions.act_window">
-        <field name="name">Properties</field>
-        <field name="res_model">estate.property</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <!-- Estate Property Type Action -->
-    <record id="estate_property_type_action" model="ir.actions.act_window">
-        <field name="name">Property Types</field>
-        <field name="res_model">estate.property.type</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
     <!-- Estate Property Search -->
     <record id="estate_property_search" model="ir.ui.view">
         <field name="name">estate.property.search</field>
@@ -68,6 +54,8 @@
 
                         <group>
                             <field name="name" />
+                            <field name="property_tag_ids" widget="many2many_tags" class="oe_inline" />
+
                         </group>
                         <group></group>
 
