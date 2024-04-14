@@ -35,7 +35,7 @@
                 <field name="expected_price" />
                 <field name="selling_price" />
                 <field name="date_availability" />
-                <field name="property_type_id" />
+                <field name="type_id" />
             </tree>
         </field>
     </record>
@@ -54,7 +54,7 @@
 
                         <group>
                             <field name="name" />
-                            <field name="property_tag_ids" widget="many2many_tags" class="oe_inline" />
+                            <field name="tag_ids" widget="many2many_tags" class="oe_inline" />
 
                         </group>
                         <group></group>
@@ -63,7 +63,7 @@
                         <group>
                             <field name="postcode" />
                             <field name="date_availability" />
-                            <field name="property_type_id" />
+                            <field name="type_id" />
                         </group>
 
                         <group>
