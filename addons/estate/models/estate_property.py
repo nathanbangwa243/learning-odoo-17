@@ -81,3 +81,12 @@ class EstateProperty(models.Model):
         """
         for record in self:
             record.best_price = max(record.offer_ids.mapped('price'))
+    
+    @api.onchange('garden')
+    def _onchange_garden(self):
+        if self.garden:
+            self.garden_area = 10
+            self.garden_orientation = 'North'
+        else:
+            self.garden_area = 0
+            self.garden_orientation = ''
