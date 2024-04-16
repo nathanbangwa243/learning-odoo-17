@@ -48,6 +48,10 @@
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <form string="Estate Property">
+                <header>
+                    <button name="action_sold_property" type="object" string="Sold"/>
+                    <button name="action_cancel_property" type="object" string="Cancel"/>
+                </header>
                 <sheet>
 
                     <group>
@@ -56,6 +60,7 @@
                         <group>
                             <field name="name" />
                             <field name="tag_ids" widget="many2many_tags" class="oe_inline" />
+                            <field name="state" />
                             <field name="type_id" />
                         </group>
                         <group></group>

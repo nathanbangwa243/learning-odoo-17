@@ -95,3 +95,23 @@ class EstateProperty(models.Model):
             return {'warning': {
                 'title': "Non-blocking Warning",
                 'message': 'Relax, is just a fun test for non-blocking message'}}
+        
+    def action_sold_property(self):
+        for record in self:
+            if record.state == 'Canceled':
+                # Canceled property cannot be Sold
+                pass
+            else:
+                record.state = 'Sold'
+        
+        return True
+    
+    def action_cancel_property(self):
+        for record in self:
+            if record.state == 'Sold':
+                # Sold property cannot be Canceled
+                pass
+            else:
+                record.state = 'Canceled'
+            
+        return True
