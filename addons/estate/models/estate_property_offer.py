@@ -5,6 +5,7 @@ from datetime import date
 
 from odoo import fields, models
 from odoo import api
+from odoo import exceptions
 
 class EstatePropertyOffer(models.Model):
     _name = 'estate.property.offer'
@@ -38,3 +39,15 @@ class EstatePropertyOffer(models.Model):
                 record.validity = (record.date_deadline - record.create_date.date()).days
             else:
                 record.validity = record.date_deadline - datetime.now().date()
+    
+    def action_accept_offer(self):
+        for record in self:
+            record.status = 'Accepted'
+        
+        return True
+    
+    def action_refuse_offer(self):
+        for record in self:
+            record.status = 'Refused'
+            
+        return True
