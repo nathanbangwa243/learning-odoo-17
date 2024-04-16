@@ -4,6 +4,11 @@ from datetime import datetime, timedelta
 
 from odoo import fields, models
 
+from odoo import api
+
+# local debug
+from . import debug
+
 class EstateProperty(models.Model):
     _name = 'estate.property'
     _description = "ESTATE Properties"
@@ -53,3 +58,16 @@ class EstateProperty(models.Model):
     buyer_id = fields.Many2one('res.partner', string="Buyer", copy=False, help="Buyer Person")
 
     offer_ids = fields.One2many('estate.property.offer', 'property_id', string='Offers', help='List of offers')
+
+    # computed fields
+    total_area = fields.Integer(string="Total Area (sqm)", compute='_compute_total_area')
+
+    @api.depends('living_area', 'garden_area')
+    def _compute_total_area(self):
+        """
+            Compute and update total area.
+        """
+        # debug.print_logs(self._compute_total_area, msg=self)
+
+        for record in self:
+            record.total_area = record.living_area + record.garden_area
