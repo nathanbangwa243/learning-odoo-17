@@ -278,6 +278,8 @@ For instance, let's say we want to `calculate` the `total area` of a property by
 
 But here's the catch: `computed fields` often rely on the values of other fields. Think of them as puzzle pieces that fit together to form a complete picture. We use the `@api.depends` decorator to specify these `dependencies`, ensuring that our computations stay in `sync` with the underlying `data`.
 
+![Computed fields fields Capture](docs/images/chap10-onchange.png)
+
 For example, if the living area or garden area of a property `changes`, we want the total area to `update automatically`. By defining these `dependencies`, Odoo knows exactly when to recalculate the total area, keeping our `data` accurate and `up-to-date`.
 
 ### Mastering Onchange Magic: 🎩
@@ -285,6 +287,9 @@ For example, if the living area or garden area of a property `changes`, we want 
 Now, let's shift our focus to `onchange` mechanisms, the wizards of `data manipulation`. Imagine our `real estate` system as a living, breathing entity that `responds` to user inputs in `real-time`. `Onchange methods` allow us to perform actions on the fly, without ever saving anything to the database.
 
 Suppose we want to enhance the user experience by `automatically` setting the garden area to 10 and the orientation to North when the 'garden' field is toggled on. `Onchange methods` make this possible, creating a seamless and intuitive interface for our users.
+
+![Onchange fields Capture](docs/images/chap10-onchange.png)
+
 
 ### Striking a Balance: ⚖️
 
