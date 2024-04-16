@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from odoo import fields, models
 
 from odoo import api
+from odoo import exceptions
 
 # local debug
 from . import debug
@@ -100,7 +101,7 @@ class EstateProperty(models.Model):
         for record in self:
             if record.state == 'Canceled':
                 # Canceled property cannot be Sold
-                pass
+                raise exceptions.UserError("Canceled property cannot be Sold")
             else:
                 record.state = 'Sold'
         
@@ -110,7 +111,8 @@ class EstateProperty(models.Model):
         for record in self:
             if record.state == 'Sold':
                 # Sold property cannot be Canceled
-                pass
+                raise exceptions.UserError("Sold property cannot be Canceled")
+
             else:
                 record.state = 'Canceled'
             
