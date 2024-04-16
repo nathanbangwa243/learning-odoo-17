@@ -90,3 +90,8 @@ class EstateProperty(models.Model):
         else:
             self.garden_area = 0
             self.garden_orientation = ''
+
+            # non-blocking message
+            return {'warning': {
+                'title': "Non-blocking Warning",
+                'message': 'Relax, is just a fun test for non-blocking message'}}
