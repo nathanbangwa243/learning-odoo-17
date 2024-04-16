@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from odoo import fields, models
 
 from odoo import api
+from odoo import exceptions
 
 # local debug
 from . import debug
@@ -95,3 +96,24 @@ class EstateProperty(models.Model):
             return {'warning': {
                 'title': "Non-blocking Warning",
                 'message': 'Relax, is just a fun test for non-blocking message'}}
+        
+    def action_sold_property(self):
+        for record in self:
+            if record.state == 'Canceled':
+                # Canceled property cannot be Sold
+                raise exceptions.UserError("Canceled property cannot be Sold")
+            else:
+                record.state = 'Sold'
+        
+        return True
+    
+    def action_cancel_property(self):
+        for record in self:
+            if record.state == 'Sold':
+                # Sold property cannot be Canceled
+                raise exceptions.UserError("Sold property cannot be Canceled")
+
+            else:
+                record.state = 'Canceled'
+            
+        return True
