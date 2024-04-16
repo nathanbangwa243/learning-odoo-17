@@ -51,6 +51,7 @@
                 <header>
                     <button name="action_sold_property" type="object" string="Sold"/>
                     <button name="action_cancel_property" type="object" string="Cancel"/>
+                    <button type="action" name="estate.estate_property_tag_action" string="Test Link"/>
                 </header>
                 <sheet>
 
