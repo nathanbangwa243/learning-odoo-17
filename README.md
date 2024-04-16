@@ -278,7 +278,7 @@ For instance, let's say we want to `calculate` the `total area` of a property by
 
 But here's the catch: `computed fields` often rely on the values of other fields. Think of them as puzzle pieces that fit together to form a complete picture. We use the `@api.depends` decorator to specify these `dependencies`, ensuring that our computations stay in `sync` with the underlying `data`.
 
-![Computed fields fields Capture](docs/images/chap10-onchange.png)
+![Computed fields fields Capture](docs/images/chap9-onchange.png)
 
 For example, if the living area or garden area of a property `changes`, we want the total area to `update automatically`. By defining these `dependencies`, Odoo knows exactly when to recalculate the total area, keeping our `data` accurate and `up-to-date`.
 
@@ -288,7 +288,7 @@ Now, let's shift our focus to `onchange` mechanisms, the wizards of `data manipu
 
 Suppose we want to enhance the user experience by `automatically` setting the garden area to 10 and the orientation to North when the 'garden' field is toggled on. `Onchange methods` make this possible, creating a seamless and intuitive interface for our users.
 
-![Onchange fields Capture](docs/images/chap10-onchange.png)
+![Onchange fields Capture](docs/images/chap9-onchange.png)
 
 
 ### Striking a Balance: ⚖️
@@ -302,3 +302,51 @@ Remember, `simplicity` is key. Avoid the temptation to add unnecessary complexit
 Armed with the knowledge of `computed fields` and `onchanges`, we stand poised to embark on the next leg of our journey. In the upcoming chapter, we'll explore how to trigger business logic with the click of a `button`, unlocking even greater possibilities for our `real estate` management system.
 
 So, dear traveler, let us march forward with confidence, for the path ahead is paved with boundless opportunities to shape the future of `real estate` management with Odoo 17.
+
+## Chapter 10: Ready For Some Action?
+
+As we continue our odyssey through the realms of Odoo 17, we find ourselves at a pivotal juncture, where the concepts of `computed fields` and `onchange` mechanisms have laid the foundation for even greater feats within our `real estate` management system.
+
+### Harnessing the Power of Action: 🚀
+
+Picture our `real estate` system as a bustling marketplace, alive with possibilities. Now, imagine imbuing it with the ability to take `action—canceling` properties, marking them as `sold`, accepting or refusing offers—all with the click of a button. This is the realm of `action buttons`, where digital switches trigger tasks that shape the destiny of our system.
+
+### Seamlessly Integrated Functionality: 🔧
+
+But how do we make this magic happen? It's simple yet profound. We embed `buttons` in our interface, each tied to a specific action. 
+
+![Action buttons Capture](docs/images/chap10-action.png)
+
+When users click these `buttons`, they set off a chain reaction of events, seamlessly integrating functionality into our system's fabric.
+
+### A Symphony of Logic and User Experience: 🎶
+
+These `action buttons` serve as conduits for our system's logic, orchestrating a symphony of user experience and functionality. 
+
+Want to `cancel` a property? Just hit `"Cancel."` Sold it? Press `"Sold."` The process is intuitive, guided by the logic we've meticulously woven into our system.
+
+![Action buttons Cancel and Sold Capture](docs/images/chap10-action-cancel-sold.png)
+
+
+But that's not all. We want our system to handle offers with grace and efficiency. By adding buttons like `"Accept"` and `"Refuse"` to our offer listings, we can streamline the process even further. And when an offer is `accepted`, the magic happens: the buyer is assigned, the selling price is set, all seamlessly orchestrated by the click of a button.
+
+![Action buttons Cancel and Sold Capture](docs/images/chap10-action-accept-refused.png)
+
+Now, you might wonder, how do we bring this magic to life? It's simpler than you think. We embed these `buttons` into our interface and `link` them `to` Python `methods` that perform the `desired actions`. By marking these `methods as public` and assigning them to the `buttons`, we unleash their power upon our system.
+
+### Guiding Principles: 🌟
+
+Yet, as we venture deeper into the realm of `action buttons`, let us heed a few guiding principles. `Simplicity` reigns supreme; let's resist the allure of unnecessary complexity. `Clarity` and `ease of use` should guide our every decision, ensuring that our system empowers users of all levels.
+
+### A Glimpse of Tomorrow: 🔮
+
+With `action buttons` at our disposal, we stand on the cusp of a new dawn. In the chapters to come, we'll explore how to `prevent incorrect data` from infiltrating our system, fortifying its foundations and ensuring its resilience in the face of real-world challenges.
+
+So, fellow voyager, let us embark on this journey with heads held high, for the path ahead brims with promise and the potential to reshape the landscape of `real estate` management with Odoo 17.
+
+**Notes:**
+
+> In **Chapter 6: Finally, Some UI To Play With**, we created an action that was linked to a menu. You may be wondering if it `is possible to link an action to a button`. Good news, it is! One way to do it is:
+> ```xml
+> <button type="action" name="your_module.action_name" string="Button Label"/>
+> ```
