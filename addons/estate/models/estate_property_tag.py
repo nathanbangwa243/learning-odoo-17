@@ -12,6 +12,8 @@ class EstatePropertyTag(models.Model):
 
     name = fields.Char(string="Name", required=True, help="Tag name")
 
+    color = fields.Integer(string="Color", help="Tag color")
+
     # constraints
     _sql_constraints = [
         ('unique_property_tag_name', 'UNIQUE(name)', 'A property cannot have duplicate tags.'),
