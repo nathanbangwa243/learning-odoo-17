@@ -50,8 +50,8 @@ class EstateProperty(models.Model):
 
     state = fields.Selection(
         string="State",
-        selection=[("New", "New"), ("Offer Received", "Offer Received"), ("Offer Accepted", "Offer Accepted"), ("Sold", "Sold"), ("Canceled", "Canceled")],
-        default="New",
+        selection=[("new", "New"), ("offer_received", "Offer Received"), ("offer_accepted", "Offer Accepted"), ("sold", "Sold"), ("canceled", "Canceled")],
+        default="new",
         help="State of the property advertisement")
     
     # links
@@ -109,22 +109,22 @@ class EstateProperty(models.Model):
         
     def action_sold_property(self):
         for record in self:
-            if record.state == 'Canceled':
-                # Canceled property cannot be Sold
-                raise exceptions.UserError("Canceled property cannot be Sold")
+            if record.state == 'canceled':
+                # canceled property cannot be sold
+                raise exceptions.UserError("canceled property cannot be sold")
             else:
-                record.state = 'Sold'
+                record.state = 'sold'
         
         return True
     
     def action_cancel_property(self):
         for record in self:
-            if record.state == 'Sold':
-                # Sold property cannot be Canceled
-                raise exceptions.UserError("Sold property cannot be Canceled")
+            if record.state == 'sold':
+                # sold property cannot be canceled
+                raise exceptions.UserError("sold property cannot be canceled")
 
             else:
-                record.state = 'Canceled'
+                record.state = 'canceled'
             
         return True
 
