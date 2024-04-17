@@ -11,6 +11,7 @@
             <form string="Estate Property Type">
                 <sheet>
                     <field name="name"/>
+                    <field name="sequence" widget="handle"/>
 
                     <notebook>
                         <page string="Properties">
