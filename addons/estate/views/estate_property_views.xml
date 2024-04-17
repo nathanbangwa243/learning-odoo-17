@@ -35,8 +35,8 @@
                 <field name="expected_price" />
                 <field name="selling_price" />
                 <field name="date_availability" />
-                <field name="type_id" />
-                <field name="tag_ids" widget="many2many_tags" class="oe_inline" />
+                <field name="type_id"/>
+                <field name="tag_ids" widget="many2many_tags" class="oe_inline"/>
             </tree>
         </field>
     </record>
@@ -62,7 +62,7 @@
                         <group>
                             <field name="name" />
                             <field name="tag_ids" widget="many2many_tags" class="oe_inline" />
-                            <field name="type_id" />
+                            <field name="type_id" options="{'no_create': True, 'no_edit': True}"/>
                         </group>
                         <group></group>
 
