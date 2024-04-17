@@ -6,6 +6,9 @@ from odoo import fields, models
 
 from odoo import api
 from odoo import exceptions
+from odoo.exceptions import ValidationError
+from odoo.tools.float_utils import float_compare, float_is_zero
+
 
 # local debug
 from . import debug
@@ -124,3 +127,9 @@ class EstateProperty(models.Model):
                 record.state = 'Canceled'
             
         return True
+
+    @api.constrains('selling_price', 'expected_price')
+    def _check_selling_price(self):
+        for property_record in self:
+            if float_compare(property_record.selling_price, 0.9 * property_record.expected_price, precision_digits=2) == -1:
+                raise ValidationError("Selling price cannot be lower than 90% of the expected price!")
