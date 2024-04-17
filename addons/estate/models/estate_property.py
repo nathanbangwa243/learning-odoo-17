@@ -135,5 +135,12 @@ class EstateProperty(models.Model):
     @api.constrains('selling_price', 'expected_price')
     def _check_selling_price(self):
         for property_record in self:
-            if float_compare(property_record.selling_price, 0.9 * property_record.expected_price, precision_digits=2) == -1:
-                raise ValidationError("Selling price cannot be lower than 90% of the expected price!")
+            # to avoid initialization error
+            if not float_is_zero(property_record.selling_price, precision_digits=1):
+                if float_compare(property_record.selling_price, 0.9 * property_record.expected_price, precision_digits=2) == -1:
+                    raise ValidationError("Selling price cannot be lower than 90% of the expected price!")
+                else:
+                    pass
+                
+            else:
+                pass
