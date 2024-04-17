@@ -27,7 +27,7 @@
         <field name="name">estate.property.tree</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
-            <tree string="Properties">
+            <tree string="Properties" default_order="date_availability desc">
                 <field name="name" />
                 <field name="postcode" />
                 <field name="bedrooms" />
