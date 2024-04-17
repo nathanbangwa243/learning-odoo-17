@@ -16,6 +16,7 @@ from . import debug
 class EstateProperty(models.Model):
     _name = 'estate.property'
     _description = "ESTATE Properties"
+    _order = "id desc"
 
     name = fields.Char(string="Title", required=True, help="Property name")
 
