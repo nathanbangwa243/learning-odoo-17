@@ -10,6 +10,7 @@ from odoo import exceptions
 class EstatePropertyOffer(models.Model):
     _name = 'estate.property.offer'
     _description = "Properties Offer"
+    _order = "price desc"
 
     price = fields.Float(string="Price", help="Buyer Offer")
     validity = fields.Integer(string="validity (days)", default=7, help="validity")
