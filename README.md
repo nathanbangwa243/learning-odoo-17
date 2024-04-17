@@ -350,3 +350,37 @@ So, fellow voyager, let us embark on this journey with heads held high, for the 
 > ```xml
 > <button type="action" name="your_module.action_name" string="Button Label"/>
 > ```
+
+## Chapter 11: Constraints
+
+With the dawn of Chapter 10, we embraced the power of `action buttons`, transforming our real estate management system into a dynamic marketplace of possibilities. Yet, as our journey unfolded, we encountered a new challenge: ensuring the integrity of our data amidst the ever-changing currents of user input.
+
+### Safeguarding the Realm: ⚔️
+
+In our quest for data integrity, we discovered the formidable tools of `constraints`. These guardians of `truth` stood as sentinels, warding off the specter of incorrect `data` with unwavering resolve.
+
+### The Arsenal of Constraints: 🛡️
+
+With Chapter 11, we delved deeper into the arsenal of constraints, uncovering two mighty weapons: `SQL constraints` and `Python constraints`. Like knights donning armor, SQL constraints fortified our database with impenetrable barriers, ensuring that amounts remained positive and names stood as unique beacons of identity.
+
+### The Wisdom of Odoo: 📜
+
+Yet, in the labyrinth of data management, `SQL` alone could not suffice. With `Python` constraints, we wielded the wisdom of Odoo to craft intricate spells of logic, guarding against the subtle nuances of incorrect data with precision and finesse.
+
+### An Exercise in Mastery: 🏋️‍♂️
+
+Guided by the hand of Odoo, we embarked on exercises that tested our skills and honed our craft. From ensuring positive prices to safeguarding the uniqueness of property tags, each challenge brought us closer to mastery over our realm of data.
+
+![SQL Constraints Capture](docs/images/chap11-sql-constraints.png)
+
+In our quest to perfect our real estate module, we encountered an exercise of great importance: to ensure that **no offer could be accepted if it dared to fall below 90%** of the expected price. With the guidance of Odoo, we crafted a `Python constraint`, leveraging the power of float comparison to safeguard our realm against unwelcome intruders.
+
+![SQL Constraints Capture](docs/images/chap11-python-constraints.png)
+
+### A Cautionary Tale: ⚠️
+
+But amidst our triumphs, a cautionary tale echoed through the halls of our adventure. Odoo warned us to tread carefully when working with floats, urging us to wield the tools of float comparison and precision handling with care and reverence.
+
+### A Journey Unfolds: 🌟
+
+As our tale draws to a close, we stand on the threshold of a new chapter, where the user interface awaits our touch of refinement. With each constraint we add, with every line of code we write, our real estate management system evolves, poised to shape the future of property management with Odoo 17.
