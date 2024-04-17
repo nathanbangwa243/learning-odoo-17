@@ -104,7 +104,7 @@
                             </page>
                             <page string="Offers">
                                 <group>
-                                    <field name="offer_ids" />
+                                    <field name="offer_ids" readonly="state in ['offer_accepted', 'sold', 'canceled']"/>
                                 </group>
                             </page>
                             <page string="Other Infos">
