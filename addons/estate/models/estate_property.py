@@ -91,7 +91,10 @@ class EstateProperty(models.Model):
             Compute and update best offer
         """
         for record in self:
-            record.best_price = max(record.offer_ids.mapped('price'))
+            try:
+                record.best_price = max(record.offer_ids.mapped('price'))
+            except ValueError:
+                record.best_price = None
     
     @api.onchange('garden')
     def _onchange_garden(self):
