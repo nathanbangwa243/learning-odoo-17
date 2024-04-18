@@ -132,7 +132,7 @@
     <field name="name">estate.property.kanban.view</field>
     <field name="model">estate.property</field>
     <field name="arch" type="xml">
-        <kanban>
+        <kanban default_group_by="property_type_id" drag_drop="True">
             <templates>
                 <t t-name="kanban-box">
                     <div class="oe_kanban_global_click">
@@ -184,6 +184,8 @@
         </kanban>
     </field>
 </record>
+
+
 
 
 
