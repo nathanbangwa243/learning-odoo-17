@@ -465,7 +465,7 @@ For example, we ➕ `add a new tab` in the user view to display a list of `avail
 
 By `fine-tuning` details, `adding` new features, and `refining` the user interface, we shape Odoo to perfectly meet the needs of our business, paving the way for even more efficient and effective `real estate` management with Odoo 17. 🌟
 
-## Interact With Other Modules 🤝
+## Chapter 14: Interact With Other Modules 🤝
 
 Building upon the foundation laid in Chapter 13, where we delved into the art of inheritance to enhance our `real estate module`, we now embark on a new journey of `integration` and collaboration.
 
