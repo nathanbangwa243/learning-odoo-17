@@ -9,6 +9,13 @@
         <field name="model">estate.property.type</field>
         <field name="arch" type="xml">
             <form string="Estate Property Type">
+                <header>
+                    <!-- <button type="action" name="estate.estate_property_offer_action" string="Offers" modifiers="{'string': 'Offer ' + str(get_offer_count())}"/> -->
+                    <button type="action" name="estate.estate_property_offer_action" position="attributes">
+                        <attribute name="string">Offer <xpath expr="string(//record[@model='estate.property.type']/field[@name='offer_count'])"/></attribute>
+                    </button>
+                    
+                </header>
                 <sheet>
                     <field name="name"/>
                     <field name="sequence" widget="handle"/>

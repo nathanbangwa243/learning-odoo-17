@@ -35,7 +35,7 @@
                 <field name="expected_price" />
                 <field name="selling_price" />
                 <field name="date_availability" optional="1"/>
-                <field name="type_id" />
+                <field name="property_type_id" />
                 <field name="tag_ids" widget="many2many_tags" class="oe_inline" />
                 <field name="state" invisible="true"/>
             </tree>
@@ -69,7 +69,7 @@
                             <field name="name" />
                             <field name="tag_ids" widget="many2many_tags" class="oe_inline"
                                 options="{'color_field': 'color'}" />
-                            <field name="type_id" options="{'no_create': True, 'no_edit': True}" />
+                            <field name="property_type_id" options="{'no_create': True, 'no_edit': True}" />
                         </group>
                         <group></group>
 

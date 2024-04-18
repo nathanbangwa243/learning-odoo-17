@@ -25,6 +25,8 @@ class EstatePropertyOffer(models.Model):
     partner_id = fields.Many2one('res.partner', string="Partner", required=True, help="Person who make the offer")
     property_id = fields.Many2one('estate.property', string="Property", required=True, help="Property")
 
+    property_type_id = fields.Many2one(related='property_id.property_type_id', store=True)
+
     # constraints
     _sql_constraints = [
         ('check_price', 'CHECK(price >= 0)', 'An offer price must be strictly positive'),
