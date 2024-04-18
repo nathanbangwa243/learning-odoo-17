@@ -464,3 +464,52 @@ For example, we ➕ `add a new tab` in the user view to display a list of `avail
 😃 With each new improvement we make, we move closer to our goal of creating an exceptional and intuitive user experience.
 
 By `fine-tuning` details, `adding` new features, and `refining` the user interface, we shape Odoo to perfectly meet the needs of our business, paving the way for even more efficient and effective `real estate` management with Odoo 17. 🌟
+
+## Interact With Other Modules 🤝
+
+Building upon the foundation laid in Chapter 13, where we delved into the art of inheritance to enhance our `real estate module`, we now embark on a new journey of `integration` and collaboration.
+
+### Bridging the Gap with Invoicing
+
+As we continue to polish our `real estate` solution, we recognize the need to seamlessly `connect` with other `modules`, unlocking new functionalities and streamlining workflows. In this chapter, our focus shifts towards `integrating` with the `Invoicing module` to automate the `invoice generation` process. 📑💼
+
+### Introducing the Link Module
+
+Just as skilled artisans carefully craft intricate designs, we meticulously design a `'link' module` to bridge our `real estate` and `accounting` functionalities. 
+
+![Link Module Capture](docs/images/chap14-link-module.png)
+
+By depending on both the `estate` and `account` modules, this `link module` serves as a conduit for data exchange, ensuring interoperability while maintaining `modularity`. 🌐🔗
+
+### Model Inheritance: Extending Capabilities
+
+In the spirit of innovation, we extend our `real estate` module's capabilities through `model inheritance`. 
+
+By `overriding` the `action triggered` when a property is `sold`, we lay the groundwork for `automated invoice` creation, seamlessly integrating with the Invoicing module. 🚀🏠
+
+### Crafting Invoices with Precision
+
+With the framework in place, we turn our attention to crafting `invoices` with precision. 
+
+![Empty Invoice Capture](docs/images/chap14-empty-invoice.png)
+
+Each `invoice` is meticulously populated with essential details such as customer ID and move type, setting the stage for accurate financial transactions. 🧾💳
+
+### Adding Finishing Touches: Invoice Lines
+
+Just as a skilled artist adds brushstrokes to complete a masterpiece, we add `invoice lines` to our invoices. 
+
+![Invoice Lines Capture](docs/images/chap14-invoice-line.png)
+
+
+
+Each line meticulously `captures transaction` specifics, ensuring clarity and accuracy in financial records. 🎨✨
+
+![Invoice List Capture](docs/images/chap14-invoice-list.png)
+
+
+### A Seamless Integration Journey
+
+With each step, our `real estate` solution evolves into a comprehensive and integrated platform. By seamlessly connecting with the `Invoicing module`, we empower users with automated workflows and enhanced efficiency.
+
+As we navigate through this integration journey, we draw closer to our vision of creating a seamless and intuitive real estate management solution with Odoo 17. 🏡🔧
