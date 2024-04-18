@@ -128,19 +128,63 @@
     </record>
 
     <!-- Kanban View -->
-    <record id="view_estate_property_kanban" model="ir.ui.view">
-        <field name="name">estate.property.kanban.view</field>
-        <field name="model">estate.property</field>
-        <field name="arch" type="xml">
-            <kanban>
-                <templates>
-                    <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click">
-                            <field name="name"/>
+<record id="view_estate_property_kanban" model="ir.ui.view">
+    <field name="name">estate.property.kanban.view</field>
+    <field name="model">estate.property</field>
+    <field name="arch" type="xml">
+        <kanban>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click">
+                        <div class="o_kanban_record">
+                            <div class="o_kanban_record_top">
+                                <b>
+                                    <field name="name" />
+                                </b>
+                            </div>
+                            <div class="o_kanban_record_bottom">
+                                <div>
+                                    <div>
+                                        <span>Expected Price: </span>
+                                        <span>
+                                            <field name="expected_price"
+                                                options='{"widget": "monetary", "currency_field": "currency_id"}' />
+                                        </span>
+                                    </div>
+
+                                    <t t-if="record.state == 'offer_received'">
+                                        <div>
+                                            <span>Best Price: </span>
+                                            <span>
+                                                <field name="best_price"
+                                                    options='{"widget": "monetary", "currency_field": "currency_id"}' />
+                                            </span>
+                                        </div>
+                                    </t>
+
+                                    <t t-if="record.state == 'offer_accepted'">
+                                        <div>
+                                            <span>Selling Price: </span>
+                                            <span>
+                                                <field name="selling_price"
+                                                    options='{"widget": "monetary", "currency_field": "currency_id"}' />
+                                            </span>
+                                        </div>
+                                    </t>
+                                </div>
+                                <div>
+                                    <span>Tags: </span>
+                                    <field name="tag_ids" widget="many2many_tags" />
+                                </div>
+                            </div>
                         </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
-    </record>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
+
+
 </odoo>
