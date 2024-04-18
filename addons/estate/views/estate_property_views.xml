@@ -12,8 +12,8 @@
                 <field name="living_area" />
                 <field name="facades" />
                 <separator />
-                <filter string="Available" name="active"
-                    domain="[('active', '=', True), '|', ('state', '=', 'New'), ('state', '=', 'Offer Received')]" />
+                <filter  name="available" string="Available"
+                    domain="[('active', '=', True), '|', ('state', '=', 'new'), ('state', '=', 'offer_received')]" />
                 <group expand="1" string="Group By">
                     <filter string="Postcode" name="postcode"
                         context="{'group_by':'postcode', 'residual_visible':True}" />
@@ -27,16 +27,17 @@
         <field name="name">estate.property.tree</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
-            <tree string="Properties">
+            <tree string="Properties" default_order="date_availability desc" decoration-success="state=='offer_received' or state=='offer_accepted'" decoration-bf="state=='offer_accepted'" decoration-muted="state=='sold'">
                 <field name="name" />
                 <field name="postcode" />
                 <field name="bedrooms" />
-                <field name="living_area" />
+                <field name="living_area" filter_domain="[('living_area', '>=', self)]"/>
                 <field name="expected_price" />
                 <field name="selling_price" />
-                <field name="date_availability" />
-                <field name="type_id" />
+                <field name="date_availability" optional="1"/>
+                <field name="property_type_id" />
                 <field name="tag_ids" widget="many2many_tags" class="oe_inline" />
+                <field name="state" invisible="true"/>
             </tree>
         </field>
     </record>
@@ -49,9 +50,15 @@
         <field name="arch" type="xml">
             <form string="Estate Property">
                 <header>
-                    <button name="action_sold_property" type="object" string="Sold"/>
-                    <button name="action_cancel_property" type="object" string="Cancel"/>
-                    <button type="action" name="estate.estate_property_tag_action" string="Test Link"/>
+                    <group invisible="state == 'sold' or state == 'canceled'">
+                        <button name="action_sold_property" type="object" string="Sold" />
+                        <button name="action_cancel_property" type="object" string="Cancel" />
+
+                    </group>
+                    <button type="action" name="estate.estate_property_tag_action"
+                        string="Test Link" />
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="new,offer_received,offer_accepted,sold" />
                 </header>
                 <sheet>
 
@@ -60,9 +67,9 @@
 
                         <group>
                             <field name="name" />
-                            <field name="tag_ids" widget="many2many_tags" class="oe_inline" />
-                            <field name="state" />
-                            <field name="type_id" />
+                            <field name="tag_ids" widget="many2many_tags" class="oe_inline"
+                                options="{'color_field': 'color'}" />
+                            <field name="property_type_id" options="{'no_create': True, 'no_edit': True}" />
                         </group>
                         <group></group>
 
@@ -90,15 +97,15 @@
                                     <field name="facades" />
                                     <field name="garage" />
                                     <field name="garden" />
-                                    <field name="garden_area" />
-                                    <field name="garden_orientation" />
+                                    <field name="garden_area" invisible="not garden"/>
+                                    <field name="garden_orientation" invisible="not garden"/>
                                     <field name="total_area" />
                                 </group>
 
                             </page>
                             <page string="Offers">
                                 <group>
-                                    <field name="offer_ids" />
+                                    <field name="offer_ids" readonly="state in ['offer_accepted', 'sold', 'canceled']"/>
                                 </group>
                             </page>
                             <page string="Other Infos">

@@ -10,6 +10,7 @@ from odoo import exceptions
 class EstatePropertyOffer(models.Model):
     _name = 'estate.property.offer'
     _description = "Properties Offer"
+    _order = "price desc"
 
     price = fields.Float(string="Price", help="Buyer Offer")
     validity = fields.Integer(string="validity (days)", default=7, help="validity")
@@ -17,12 +18,14 @@ class EstatePropertyOffer(models.Model):
 
     status = fields.Selection(
         string="Status",
-        selection=[("Accepted", "Accepted"), ("Refused", "Refused"),],
+        selection=[("offer_accepted", "Accept"), ("offer_refused", "Refuse"),],
         copy=False,
         help="State of the property advertisement")
     
     partner_id = fields.Many2one('res.partner', string="Partner", required=True, help="Person who make the offer")
     property_id = fields.Many2one('estate.property', string="Property", required=True, help="Property")
+
+    property_type_id = fields.Many2one(related='property_id.property_type_id', store=True)
 
     # constraints
     _sql_constraints = [
@@ -49,12 +52,13 @@ class EstatePropertyOffer(models.Model):
         for record in self:
             # Reject all others offers
             for offer in record.property_id.offer_ids:
-                offer.status = 'Refused'
+                offer.status = 'offer_refused'
             
             # accept this offer
-            record.status = 'Accepted'
+            record.status = 'offer_accepted'
 
             # update selling_price and buyer
+            record.property_id.state = record.status
             record.property_id.selling_price = record.price
             record.property_id.buyer_id = record.partner_id
 

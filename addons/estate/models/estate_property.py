@@ -16,6 +16,7 @@ from . import debug
 class EstateProperty(models.Model):
     _name = 'estate.property'
     _description = "ESTATE Properties"
+    _order = "id desc"
 
     name = fields.Char(string="Title", required=True, help="Property name")
 
@@ -50,12 +51,12 @@ class EstateProperty(models.Model):
 
     state = fields.Selection(
         string="State",
-        selection=[("New", "New"), ("Offer Received", "Offer Received"), ("Offer Accepted", "Offer Accepted"), ("Sold", "Sold"), ("Canceled", "Canceled")],
-        default="New",
+        selection=[("new", "New"), ("offer_received", "Offer Received"), ("offer_accepted", "Offer Accepted"), ("sold", "Sold"), ("canceled", "Canceled")],
+        default="new",
         help="State of the property advertisement")
     
     # links
-    type_id = fields.Many2one('estate.property.type', string="Type")
+    property_type_id = fields.Many2one('estate.property.type', domain="[('id', '!=', False)]", string="Type")
     tag_ids = fields.Many2many('estate.property.tag', string="Tag")
 
     salesperson_id = fields.Many2one('res.users', string='Salesman', default=lambda self: self.env.user, help="Salesperson")
@@ -91,7 +92,10 @@ class EstateProperty(models.Model):
             Compute and update best offer
         """
         for record in self:
-            record.best_price = max(record.offer_ids.mapped('price'))
+            try:
+                record.best_price = max(record.offer_ids.mapped('price'))
+            except ValueError:
+                record.best_price = None
     
     @api.onchange('garden')
     def _onchange_garden(self):
@@ -109,27 +113,34 @@ class EstateProperty(models.Model):
         
     def action_sold_property(self):
         for record in self:
-            if record.state == 'Canceled':
-                # Canceled property cannot be Sold
-                raise exceptions.UserError("Canceled property cannot be Sold")
+            if record.state == 'canceled':
+                # canceled property cannot be sold
+                raise exceptions.UserError("canceled property cannot be sold")
             else:
-                record.state = 'Sold'
+                record.state = 'sold'
         
         return True
     
     def action_cancel_property(self):
         for record in self:
-            if record.state == 'Sold':
-                # Sold property cannot be Canceled
-                raise exceptions.UserError("Sold property cannot be Canceled")
+            if record.state == 'sold':
+                # sold property cannot be canceled
+                raise exceptions.UserError("sold property cannot be canceled")
 
             else:
-                record.state = 'Canceled'
+                record.state = 'canceled'
             
         return True
 
     @api.constrains('selling_price', 'expected_price')
     def _check_selling_price(self):
         for property_record in self:
-            if float_compare(property_record.selling_price, 0.9 * property_record.expected_price, precision_digits=2) == -1:
-                raise ValidationError("Selling price cannot be lower than 90% of the expected price!")
+            # to avoid initialization error
+            if not float_is_zero(property_record.selling_price, precision_digits=1):
+                if float_compare(property_record.selling_price, 0.9 * property_record.expected_price, precision_digits=2) == -1:
+                    raise ValidationError("Selling price cannot be lower than 90% of the expected price!")
+                else:
+                    pass
+                
+            else:
+                pass
