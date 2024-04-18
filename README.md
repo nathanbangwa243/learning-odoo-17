@@ -436,3 +436,31 @@ As we embark upon Chapter 12, our mission is clear: to add the final touches tha
 - Through the judicious use of `related fields` and custom actions, we aim to unveil actionable insights with a single click, empowering users to make informed decisions.
 
 As we embark upon this journey to add the final sprinkles to our `real estate module`, we do so with a sense of purpose and determination. With each enhancement we introduce, we draw closer to our vision of creating a user experience that is both delightful and `intuitive`, setting the stage for a new era in property management with Odoo 17.
+
+## Chapter 13: Inheritance 🏰
+
+After adding the final 🎨 decorative touches to our 🏠 `real estate module` in the previous chapter, we now dive into Chapter 13 to explore even more features that enhance the user experience.
+
+### Inheriting for Innovation:
+Like meticulous craftsmen, we seek to refine existing functionalities by exploring 🔗 `inheritance` mechanisms in Odoo. This allows us to ➕ `add new features` while preserving code integrity and system stability.
+
+### Python Inheritance:
+Similar to superheroes acquiring new powers, we learn to 🚀 `extend standard methods` of data creation, reading, writing, and deletion.
+
+![Deletion Prevention Capture](docs/images/chap13-prevent-deletion.png)
+
+For example, we now 🚫 prevent the `accidental deletion` of important properties by disallowing the deletion of any property that is not new or canceled.
+
+### Model Inheritance:
+Like an artist 🎨 painting a canvas, we ➕ `add new fields` to our existing models to enrich the functionality of our system.
+
+### View Inheritance:
+As user experience architects, we 🛠️ `customize` the appearance of our `user interface` by inheriting existing `views` and adapting them to our specific needs.
+
+![Model Inheritance Capture](docs/images/chap13-inheritance-view.png)
+
+For example, we ➕ `add a new tab` in the user view to display a list of `available properties`, providing users with quick and intuitive access to relevant information.
+
+😃 With each new improvement we make, we move closer to our goal of creating an exceptional and intuitive user experience.
+
+By `fine-tuning` details, `adding` new features, and `refining` the user interface, we shape Odoo to perfectly meet the needs of our business, paving the way for even more efficient and effective `real estate` management with Odoo 17. 🌟
