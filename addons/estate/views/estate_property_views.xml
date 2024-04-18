@@ -12,8 +12,8 @@
                 <field name="living_area" />
                 <field name="facades" />
                 <separator />
-                <filter string="Available" name="active"
-                    domain="[('active', '=', True), '|', ('state', '=', 'New'), ('state', '=', 'Offer Received')]" />
+                <filter  name="available" string="Available"
+                    domain="[('active', '=', True), '|', ('state', '=', 'new'), ('state', '=', 'offer_received')]" />
                 <group expand="1" string="Group By">
                     <filter string="Postcode" name="postcode"
                         context="{'group_by':'postcode', 'residual_visible':True}" />
