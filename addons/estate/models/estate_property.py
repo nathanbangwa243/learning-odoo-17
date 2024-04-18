@@ -7,6 +7,7 @@ from odoo import fields, models
 from odoo import api
 from odoo import exceptions
 from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError
 from odoo.tools.float_utils import float_compare, float_is_zero
 
 
@@ -144,3 +145,12 @@ class EstateProperty(models.Model):
                 
             else:
                 pass
+
+    @api.ondelete(at_uninstall=False)
+    def _check_property_state(self):
+        for property_record in self:
+            if property_record.state not in ['new', 'canceled']:
+                raise UserError("Only New or Canceled property can be deleted!")
+            else:
+                pass
+

@@ -6,6 +6,7 @@ from datetime import date
 from odoo import fields, models
 from odoo import api
 from odoo import exceptions
+from odoo.exceptions import ValidationError
 
 class EstatePropertyOffer(models.Model):
     _name = 'estate.property.offer'
@@ -71,3 +72,14 @@ class EstatePropertyOffer(models.Model):
             record.status = 'Refused'
             
         return True
+    
+    @api.model
+    def create(self, vals):
+        # Check if the offer price is lower than existing offers
+        existing_offers = self.env['estate.property.offer'].search([('property_id', '=', vals['property_id']), ('price', '>=', vals['price'])])
+        if existing_offers:
+            raise ValidationError("The offer price cannot be lower than an existing offer.")
+        
+        # Set property state to 'Offer Received' at offer creation
+        self.env['estate.property'].browse(vals['property_id']).write({'state': 'offer_received'})
+        return super().create(vals)
