@@ -26,7 +26,7 @@ Now, our adventurer is ready to embark on their journey. But before diving into 
 
 And thus, armed with knowledge and determination, our adventurer sets forth to conquer the realm of Odoo, one module at a time. 🌌
 
-## Chapter 2: Development Environment Configuration
+## [SETUP GUIDE] Development Environment Configuration
 
 
 ### Note:
@@ -86,7 +86,7 @@ docker logs -f postgres_odoo17Learning
 
 Now that your server is running, it's time to write our own application! 😎
 
-## Chapter 3 : A New Application.
+## Chapter 2 : A New Application.
 
 📖 The purpose of this chapter is to embark on a journey of creation, laying the very foundation for a brand new `Odoo module`. Imagine starting from scratch, with only the bare essentials needed to catch Odoo's attention. As we progress through the chapters, we'll add layers of features, weaving a tapestry of a realistic business case.
 
@@ -114,7 +114,7 @@ Now that your server is running, it's time to write our own application! 😎
 
 📜 With the groundwork laid, our adventure continues as we prepare to `create our first model`. Exciting times lie ahead as we breathe life into our module, one enchanting step at a time.
 
-## Chapter 4 : Models And Basic Fields
+## Chapter 3 : Models And Basic Fields
 
 🏰 Picture our `Odoo module` as a freshly built house - sturdy and promising, yet lacking the warmth of life within its walls. In this chapter, our quest was to breathe life into our module by giving it the ability to `store data`. 💼
 
@@ -140,7 +140,7 @@ Yet, our work was not complete until we ensured the `integrity` of our `data`. W
 
 And so, our journey through Chapter 4 came to an end, but our module was now imbued with the power to `store and manage` real estate `data`. With each step forward, our `module` grew stronger, paving the way for greater adventures in the realm of `Odoo`. 🚀
 
-## Chapter 5: Security - A Brief Introduction
+## Chapter 4: Security - A Brief Introduction
 
 In the journey of building our `Odoo module`, we've ventured into the realm of `security`, a crucial aspect in any software application, especially when it comes to managing `sensitive` business `data`. 🏰
 
@@ -158,7 +158,7 @@ In our journey, we've set out to `grant access rights` to the `base.group_user`,
 
 With `access rights` in place, our module's `security` is fortified, and we're now ready to open the gates and let users interact with our `module's user interface`, marking the next phase of our adventure in Odoo development. 🚀
 
-## Chapter 6: Finally, Some UI To Play With
+## Chapter 5: Finally, Some UI To Play With
 
 Now that we've laid the foundation with our new `model` and access rights, it's time to dive into the exciting world of `user interface` interaction. 🚀
 
@@ -188,7 +188,7 @@ Certain `fields` in Odoo come with `predefined behaviors`, guiding how data beha
 
 With each step, we're unlocking new possibilities in our journey with `Odoo`. As we delve deeper into defining our `views`, the interface becomes not just a canvas but a portal to a seamless `user experience`. 🌟
 
-## Chapter 7: Basic Views
+## Chapter 6: Basic Views
 
 🌟 In our journey through Odoo's realm, we've ventured into crafting `models` and setting up `access rights`. Now, it's time to give our application a face, a `user interface` where users can interact and bring our creation to life.
 
@@ -219,7 +219,7 @@ As we sculpt these `views`, remember, it's not just about aesthetics. It's about
 
 We're just scratching the surface here. There's still much to explore, like `custom filters` and `grouping`. But for now, let's revel in the joy of creating `views` that make our `app shine`.
 
-## Chapter 8: Relations Between Models
+## Chapter 7: Relations Between Models
 
 In our quest to build the ultimate `real estate management system`, we've journeyed through the intricacies of crafting `models` and designing intuitive `views`. Now, armed with a deeper understanding of how `views` shape user `interaction`, we venture into the realm of `model relationships`.
 
@@ -264,7 +264,7 @@ And so, armed with the knowledge of `model relationships`, we embark on the next
 > Because a `One2many` is a `virtual` relationship, there must be a `Many2one` field defined in the `comodel`.
 
 
-## Chapter 9: Computed Fields And Onchanges
+## Chapter 8: Computed Fields And Onchanges
 
 In our journey to master the intricacies of Odoo 17, we find ourselves standing at the threshold of a new frontier: `computed fields` and `onchange` mechanisms. These may sound daunting, but fear not, for they hold the key to unlocking the true potential of our `real estate` management system.
 
@@ -303,7 +303,7 @@ Armed with the knowledge of `computed fields` and `onchanges`, we stand poised t
 
 So, dear traveler, let us march forward with confidence, for the path ahead is paved with boundless opportunities to shape the future of `real estate` management with Odoo 17.
 
-## Chapter 10: Ready For Some Action?
+## Chapter 9: Ready For Some Action?
 
 As we continue our odyssey through the realms of Odoo 17, we find ourselves at a pivotal juncture, where the concepts of `computed fields` and `onchange` mechanisms have laid the foundation for even greater feats within our `real estate` management system.
 
@@ -351,9 +351,9 @@ So, fellow voyager, let us embark on this journey with heads held high, for the 
 > <button type="action" name="your_module.action_name" string="Button Label"/>
 > ```
 
-## Chapter 11: Constraints
+## Chapter 10: Constraints
 
-With the dawn of Chapter 10, we embraced the power of `action buttons`, transforming our real estate management system into a dynamic marketplace of possibilities. Yet, as our journey unfolded, we encountered a new challenge: ensuring the integrity of our data amidst the ever-changing currents of user input.
+With the dawn of Chapter 9, we embraced the power of `action buttons`, transforming our real estate management system into a dynamic marketplace of possibilities. Yet, as our journey unfolded, we encountered a new challenge: ensuring the integrity of our data amidst the ever-changing currents of user input.
 
 ### Safeguarding the Realm: ⚔️
 
@@ -393,7 +393,7 @@ In Chapter 11, we fortified our realm with the formidable tools of SQL and Pytho
 
 As we embark upon Chapter 12, our mission is clear: to add the final touches that will elevate our real estate management system from a mere tool to a delightful and intuitive platform for property management.
 
-## Chapter 12: Add The Sprinkles
+## Chapter 11: Add The Sprinkles
 
 ### Adding Visual Flair:
 - We aspire to infuse our `list views` with vibrant `colors`, distinguishing properties with offers received, offers accepted, and those that have been sold or canceled.
@@ -427,7 +427,6 @@ As we embark upon Chapter 12, our mission is clear: to add the final touches tha
 ![Default Filter Capture](docs/images/chap12-inline-view.png)
 
 
-
 - By harnessing the power of `widgets`, we can tailor the display of fields to suit the unique requirements of our real estate module, enhancing `clarity` and usability.
 
 ### Unveiling Insights with Stat Buttons:
@@ -437,9 +436,9 @@ As we embark upon Chapter 12, our mission is clear: to add the final touches tha
 
 As we embark upon this journey to add the final sprinkles to our `real estate module`, we do so with a sense of purpose and determination. With each enhancement we introduce, we draw closer to our vision of creating a user experience that is both delightful and `intuitive`, setting the stage for a new era in property management with Odoo 17.
 
-## Chapter 13: Inheritance 🏰
+## Chapter 12: Inheritance 🏰
 
-After adding the final 🎨 decorative touches to our 🏠 `real estate module` in the previous chapter, we now dive into Chapter 13 to explore even more features that enhance the user experience.
+After adding the final 🎨 decorative touches to our 🏠 `real estate module` in the previous chapter, we now dive into this chapter to explore even more features that enhance the user experience.
 
 ### Inheriting for Innovation:
 Like meticulous craftsmen, we seek to refine existing functionalities by exploring 🔗 `inheritance` mechanisms in Odoo. This allows us to ➕ `add new features` while preserving code integrity and system stability.
@@ -465,9 +464,9 @@ For example, we ➕ `add a new tab` in the user view to display a list of `avail
 
 By `fine-tuning` details, `adding` new features, and `refining` the user interface, we shape Odoo to perfectly meet the needs of our business, paving the way for even more efficient and effective `real estate` management with Odoo 17. 🌟
 
-## Chapter 14: Interact With Other Modules 🤝
+## Chapter 13: Interact With Other Modules 🤝
 
-Building upon the foundation laid in Chapter 13, where we delved into the art of inheritance to enhance our `real estate module`, we now embark on a new journey of `integration` and collaboration.
+Building upon the foundation laid in previous Chapter, where we delved into the art of inheritance to enhance our `real estate module`, we now embark on a new journey of `integration` and collaboration.
 
 ### Bridging the Gap with Invoicing
 
@@ -514,9 +513,9 @@ With each step, our `real estate` solution evolves into a comprehensive and inte
 
 As we navigate through this integration journey, we draw closer to our vision of creating a seamless and intuitive real estate management solution with Odoo 17. 🏡🔧
 
-## Chapter 15: A Brief History Of QWeb
+## Chapter 14: A Brief History Of QWeb
 
-Building upon the harmonious collaboration achieved in Chapter 14, where our `real estate module` intertwined with the `Invoicing module`, we now embark on a quest to infuse our interface with unparalleled charm and flexibility. 🌟
+Building upon the harmonious collaboration achieved in previous chapter, where our `real estate module` intertwined with the `Invoicing module`, we now embark on a quest to infuse our interface with unparalleled charm and flexibility. 🌟
 
 In this chapter, we journey into the mystical realm of `QWeb Templates`, a realm where design and functionality converge in harmony. As we gaze upon the landscape of our `real estate application`, we realize that to truly captivate our users, we must transcend the ordinary and embrace the extraordinary. 🏞️
 
@@ -537,3 +536,21 @@ But our journey does not end there. With the knowledge gained from our adventure
 And as the final touch to our masterpiece, we invoke the ancient magic of `default grouping`, arranging our properties by type with effortless grace. With a wave of our wand, we create harmony amidst chaos, ensuring that each card finds its rightful place in the grand tapestry of our `real estate` application. 🌌
 
 As our journey through the realm of `QWeb` comes to a close, we emerge as masters of `interface design`, armed with the knowledge and skills to create captivating and immersive experiences for our users. With `QWeb` as our guide, we continue to push the boundaries of what is possible, forging new paths and unlocking new horizons in the world of `Odoo development`. 🚀
+
+## Chapter 15: The final word
+
+As our journey through the realm of `Odoo` nears its conclusion, we stand on the precipice of greatness, poised to embark on one final quest: the `pursuit of perfection` in our code. 🏰
+
+Guided by the ancient principles of the [Odoo coding guidelines](https://www.odoo.com/documentation/17.0/contributing/development/coding_guidelines.html), we set forth to refine our creations and elevate them to new heights of excellence. These `guidelines`, like the sacred scriptures of our craft, are a roadmap to `improving the quality` of our `Odoo Apps code`. 📜✨
+
+With each line of code we `refactor`, we breathe life into our creations, imbuing them with the essence of best practices and standards. We meticulously adhere to the `module structure`, ensuring that our `code is organized` and easy to navigate. We choose `variable names` with care, selecting words that convey meaning and `clarity`. Our method names follow a convention that speaks to the heart of `readability` and `coherence`. 💻🔍
+
+As we `polish our code` to a brilliant sheen, we heed the call to run our `linter`, the vigilant guardian of `code quality`. With its watchful eye, we detect and rectify any deviations from the `guidelines`, ensuring that our code stands as a paragon of excellence. 🛡️🔧
+
+But our journey does not end there. With our code refined and perfected, we turn our gaze towards the horizon and behold the majestic [runbot](https://runbot.odoo.com/), `Odoo's` own `guardian` of stability and reliability. Here, on this sacred ground, every commit, branch, and pull request undergoes `rigorous testing` to prevent `regressions` and uphold the sanctity of the `stable versions`. 🤖⚙️
+
+In the realm of the `runbot`, we witness the culmination of our efforts, as each `successful test` run heralds the birth of a new iteration of `Odoo`, infused with the spirit of our dedication and craftsmanship. 🎉🌟
+
+And so, dear traveler, as our odyssey draws to a close, we invite you to join us in this final act of exploration. Journey to the [runbot website](https://runbot.odoo.com/), where the fruits of our labor await your inspection. Behold the last `stable version of Odoo` in all its glory, and marvel at the myriad applications and functionalities that embody the spirit of our quest for perfection. 🚀🔍
+
+SEE YOU NEXT 😃
