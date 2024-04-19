@@ -537,7 +537,7 @@ And as the final touch to our masterpiece, we invoke the ancient magic of `defau
 
 As our journey through the realm of `QWeb` comes to a close, we emerge as masters of `interface design`, armed with the knowledge and skills to create captivating and immersive experiences for our users. With `QWeb` as our guide, we continue to push the boundaries of what is possible, forging new paths and unlocking new horizons in the world of `Odoo development`. 🚀
 
-## Chapter 15: The Quest for Perfection
+## Chapter 15: The final word
 
 As our journey through the realm of `Odoo` nears its conclusion, we stand on the precipice of greatness, poised to embark on one final quest: the `pursuit of perfection` in our code. 🏰
 
