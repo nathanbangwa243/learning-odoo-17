@@ -644,3 +644,45 @@ But the true magic lay in the `variables` - the seasoning that brought flavor to
 As the tale unfolds, we witness the convergence of `CSS` and `SCSS`, blending the best of both worlds like a perfect fusion dish. `SCSS variables` laid the foundation of the `design system`, while `CSS variables` added a touch of `contextual adaptation`, creating a harmonious symphony of style.
 
 And so, dear reader, as we bid adieu to this culinary journey through the world of CSS and SCSS, let us remember that much like cooking, `web development` is an art form where creativity and precision go hand in hand. 🎨✨
+
+### Git guidelines
+
+In the vast realm of Odoo, where developers journey through lines of code like explorers navigating uncharted lands, there exists a sacred tradition known as `Git guidelines`. Passed down through generations of programmers, these guidelines serve as a beacon of order amidst the ever-changing sea of code.
+
+🌟 Picture, if you will, a seasoned chef preparing a gourmet meal. Just as the chef meticulously organizes ingredients and follows a recipe, so too must developers configure their `Git settings`. By defining user `email` and `name`, developers establish their `identity` in the digital kitchen, ensuring that each `commit` carries their mark 🍳.
+
+But what of the `commit message`, you ask? Much like a chef composing a menu, a commit message comprises four parts: tag, module, short description, and full description.
+
+#### Tag and module name
+
+🏷️ `tags`, much like labels on different compartments of a toolbox. Each `tag` serves a specific `purpose`, from fixing `bugs` to adding new `features` or even `reverting` changes that have caused unforeseen `issues`. These tags provide clarity and organization, ensuring that every commit is categorized appropriately.
+
+But `tags` alone are not enough. Just as a craftsman carefully selects the right tool for the job, developers must craft meaningful `commit message headers`.
+
+#### Commit message header
+
+Picture yourself as a storyteller, crafting the beginning of a tale that sets the stage for an epic journey. In the realm of Odoo development, every `commit message` is like the opening line of a story, offering insight into the `purpose behind each change`.
+
+As the protagonist of this narrative, the `commit message header` takes center stage after the tag and module name. It's not just a label slapped onto a package, but rather a `concise summary` that hints at the adventure to come. 
+
+Avoid the temptation to use vague terms like `"bugfix"` or `"improvements"` – instead, strive for `clarity` and `brevity`. Imagine your header as the opening scene of a play, succinctly capturing the essence of the change in about `50 characters`. 
+
+🌟 `If applied, this commit will...` and let your `header` complete the sentence with clarity and purpose. Whether it's fixing a bug, adding a new feature, or making improvements, each `commit message` sets the tone for the next chapter in the development saga.
+
+#### Commit message full description
+
+Imagine yourself as a seasoned bard 🎶, weaving tales of `code changes` and development quests in the land of Odoo. Every commit message is like a chapter in a grand saga, telling the story of why and `how` the code was `transformed`.
+
+As the hero of this narrative, the `commit message full description` holds great power. It serves as the guiding star for future adventurers 🌟 who may journey back to your commit in search of wisdom. 
+
+Begin by unraveling the mystery behind your code modifications. `Why` did you embark on this quest? `What purpose` does your change serve in the greater scheme of things? 
+
+Remember, `clarity` is your sword 🗡️, and `verbosity` your shield 🛡️ – don't hesitate to share the tale behind your journey.
+
+While the `commit` itself reveals the `technical changes`, the `commit message` is your chance to shed light on the path you've chosen. Were there any `forks` in the road? Any `crucial decisions` that led you to this point? Share your insights with future travelers 🚀, for they may benefit from your wisdom.
+
+Every `commit` should focus on a `single module`, avoiding the tangled webs of multi-module changes. By splitting your quests into `separate commits`, you create a clearer roadmap 🗺️ for future explorers, allowing them to navigate each `module's history` with ease.
+
+And remember, fellow developer, the importance of your words cannot be overstated. Craft your `commit messages` with care, for they are the legacy you leave behind. Whether it's a `refactor`, a `bug fix`, or an `improvement`, let your message echo through the halls of code, guiding and inspiring those who follow in your footsteps.
+
+And so, dear reader, as we conclude this tale of `Git guidelines` in Odoo, let us remember the lessons learned from the culinary world. Just as a well-crafted dish delights the palate, a well-composed `commit message` brings clarity and understanding to the realm of code. 🖥️🍽️
