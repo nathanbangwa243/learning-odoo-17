@@ -554,3 +554,93 @@ In the realm of the `runbot`, we witness the culmination of our efforts, as each
 And so, dear traveler, as our odyssey draws to a close, we invite you to join us in this final act of exploration. Journey to the [runbot website](https://runbot.odoo.com/), where the fruits of our labor await your inspection. Behold the last `stable version of Odoo` in all its glory, and marvel at the myriad applications and functionalities that embody the spirit of our quest for perfection. 🚀🔍
 
 SEE YOU NEXT 😃
+
+## Contributing
+
+### Coding guidelines
+
+Once upon a time in the kingdom of Odoo, there were sacred rules known as the `Coding Guidelines`. These guidelines were like magic spells that aimed to make the code of Odoo Apps shine brighter than the stars. 🌟
+
+You see, `proper code` was more than just lines on a screen; it was the key to unlocking the secrets of `readability`, the sword that vanquished `complexity`, and the shield that guarded against `bugs`. And so, every developer who dared to venture into the realm of Odoo was expected to abide by these `guidelines`, for they held the secrets to crafting `software` of the highest `quality`.
+
+But heed this warning, dear reader: when treading upon the paths of `stable versions`, thou shalt not tamper with existing files! For the style of those files is sacred, and any attempt to alter them would disrupt the very fabric of `revision history`. Keep thy changes minimal, and let the `original style` reign supreme.
+
+#### Module structure
+
+And in the land of `directories`, where modules took shape, there lay the heart of business logic. From `data` to `models`, `controllers` to `views`, each directory whispered its purpose to those who dared to listen. 
+
+And `file naming`? Ah, a tale as old as time itself! For in Odoo, the names of files were like breadcrumbs leading developers on a journey of `understanding`. Whether it be models or security, views or wizards, each file bore a name that revealed its `true essence`.
+
+But let us not forget the stories of `controllers` and static files, where `JavaScript` and templates danced in harmony, each with its own place in the grand tapestry of code. And `wizards`, with their `transient models` and views, added a touch of magic to the world of Odoo.
+
+
+So, dear reader, as you embark on your quest through the documentation of Odoo 17, remember these tales of the `Coding Guidelines`. For they are not mere rules to be followed, but the very essence of craftsmanship in the enchanted kingdom of code. 🏰✨✨
+
+#### XML files
+
+Once upon a time in the bustling kitchen of Odoo, there existed a language known as `XML`, akin to the recipes that held the very essence of culinary creations.
+
+In this lively kitchen, `XML files` were like well-worn cookbooks, each containing the recipe for a delightful dish of Odoo. But fear not, for even the novice chef could decipher their secrets with the help of the `XML Format`.
+
+Behold, the `<record>` notation, a powerful recipe that brought forth new flavors into the kitchen of Odoo. With it, one could declare `views`, `actions`, and even `menus` with ease. But remember, young chef, to season with the `id` attribute before the `model`, for it is the key to unlocking the flavor within.
+
+And what of ingredients, you ask? Ah, their declaration was a dance of syntax, where the `name` attribute led the way, followed by the `value` in the `field` tag or `eval` attribute. And let us not forget the other attributes, `ordered by importance`, for they too played a role in shaping the taste of Odoo.
+
+But wait! There are shortcuts, dear chef, shortcuts that can save you from the labyrinth of `XML`. The `menuitem` and `template` tags, acting as sous-chefs in the kitchen, allow you to declare `menus` and `QWeb views` with but a few ingredients.
+
+Now, onto `XML IDs` and `naming`, a topic as vast as the pantry itself. For `menus`, `views`, and `actions`, there exists a recipe, a recipe that ensures `clarity` and `understanding` in the kitchen of Odoo. And let us not forget `security`, where `groups` and `rules` are named with care, each bearing the mark of its culinary purpose.
+
+But what of `inheritance`, you ask? Fear not, for even in the world of `XML`, there exists a path for the brave. `Inheriting XML` is a tale of flavors and combinations, where `IDs` remain the same, yet hold the power of transformation within.
+
+So, young chef, as you journey through the kitchen of Odoo, remember these tales of `XML`. For they are the recipes to unlocking the flavors that lie within, guiding you on your quest to become a master of the culinary arts. 🍳👨‍🍳
+
+#### Python
+
+Once upon a time in the vibrant world of Odoo, there existed a magical language known as `Python` 🐍, where developers wielded the power of code to bring their digital creations to life.
+
+But heed this warning, dear coder, for the path of Python is fraught with peril! Do not venture forth without first acquainting yourself with the `Security Pitfalls` section 🚨, for it holds the secrets to writing code that guards against nefarious forces.
+
+Now, imagine a realm where code is not just lines on a screen, but a symphony of structure and `style`. Enter the world of `PEP8` options, where a `linter` acts as a vigilant guardian, ensuring that your code adheres to the `standards` of the Python elders 📏. Though some rules may seem arbitrary, they serve to maintain order and `clarity` in the land of code.
+
+Behold, the `Imports`, an organized procession of `external` libraries, `Odoo` essentials, and `module` treasures 📚. Like ingredients in a grand feast 🍲, they are arranged with care, each serving a specific purpose in the grand recipe of your code.
+
+But what of the `Idiomatics of Programming`, you ask? Ah, here lies the heart of `Pythonic wisdom`! From the humble creation of `dictionaries` to the art of `list comprehensions`, these are the guiding principles that transform mere code into `elegant expressions` of logic and clarity ✨.
+
+And let us not forget the `Symbols` and `Conventions`, where even the naming of variables and methods follows a sacred tradition 🏛️. From `camelcase` in Python classes to the meticulous `ordering` of attributes and methods within a model, every detail serves to honor the craftsmanship of coding.
+
+But beware, young developer, for the road ahead is fraught with challenges. Do not be tempted by the allure of `manual commits` or the misuse of translation methods, for they may lead you down a treacherous path of `broken code` and `lost data`.
+
+In the realm of Odoo, where the digital pursue the perfection, remember these tales of Python. For they are the keys to unlocking the `full potential` of your code, `guiding` you on your quest to become a master of the craft 🛠️.
+
+#### JavaScript
+
+
+Once upon a time, in the bustling kitchen of Odoo, where digital recipes were concocted, there existed a special ingredient known as `Javascript`. But much like any culinary craft, it had its own recipe book and kitchen `rules`, guiding the chefs as they whipped up their digital delicacies 🍳.
+
+In this savory realm of `web development`, where ingredients danced on the digital stove, the organization of `static files` was akin to the meticulous arrangement of ingredients on a chef's cutting board 🥕. Within the pantry of the `static folder`, each file had its designated shelf, carefully arranged according to the culinary `conventions` of the Odoo chefs.
+
+Enter the pantry's `library` section, a treasure trove of culinary knowledge where the whispers of seasoned recipes like `jQuery` and others could be heard. Here, within its hallowed shelves, chefs sought the wisdom of the culinary elders to enrich their creations.
+
+But the journey didn't end there, for beyond the `libraries` lay the heart of the kitchen - the ingredients cupboard 🌶️. Within its shelves dwelled the source ingredients, divided into sacred sections of spices, herbs, oils, and more.
+
+And so, the chefs were reminded to embrace the culinary `traditions` of strict measurements and the `guidance` of kitchen tools 🧊. For in the world of `Javascript`, adherence to the culinary `rules` was paramount, ensuring that the recipe remained pure and free from error.
+
+But heed this warning, dear chefs: never succumb to the temptation of `prepackaged` ingredients, for they are but shadows of their fresh counterparts, lacking the flavor that once made them great.
+
+Armed with the knowledge of `Javascript` culinary `guidelines`, the chefs ventured forth into the digital kitchen, their code a flavorful dish in the banquet of the `web`. For in the kitchen of Odoo, where digital recipes are cooked to perfection, it is the code that seasons the feast of digital experiences 🍽️.
+
+#### CSS and SCSS
+
+Once upon a `webpage`, in the land of Odoo, where digital `designs` flourished like gardens in springtime, there existed a realm known as `CSS` and `SCSS`. Here, amidst the `cascading stylesheets` and the flavorful `SCSS mixins`, a tale of syntax, formatting, and naming conventions unfolded.
+
+Imagine, if you will, the kitchen of a master chef, where every utensil has its designated place, and every recipe follows a precise order of preparation. Similarly, in the world of `CSS` and `SCSS`, `indentation` ruled with four-space indents, ensuring that each line of code stood in its rightful place, much like ingredients lined up on a chef's cutting board 🍽️.
+
+But let us delve deeper into this culinary adventure. Just as a chef meticulously orders the sequence of cooking steps, so too must the web developer organize `properties` in their `CSS` and `SCSS` files. From the outside in, starting with the position and ending with decorative rules, each declaration found its place in the `digital cookbook` 📜.
+
+And what of the `naming conventions`, you ask? Much like labeling ingredients in jars, `CSS classes` were prefixed with `'o_'` followed by the `module name`, ensuring transparency and clarity in the code. Just as a chef avoids cluttering the kitchen with hyper-specific ingredients, web developers refrained from creating overly specific `classes`, opting instead for a more concise and `maintainable approach`.
+
+But the true magic lay in the `variables` - the seasoning that brought flavor to the dish of `design`. In the world of Odoo, `SCSS variables` followed a sacred naming convention, ensuring `harmony` and `consistency` in the digital kitchen. Meanwhile, CSS variables danced across the `DOM`, adapting the design and layout to specific `contexts`, much like a skilled chef adjusting the recipe to suit the occasion.
+
+As the tale unfolds, we witness the convergence of `CSS` and `SCSS`, blending the best of both worlds like a perfect fusion dish. `SCSS variables` laid the foundation of the `design system`, while `CSS variables` added a touch of `contextual adaptation`, creating a harmonious symphony of style.
+
+And so, dear reader, as we bid adieu to this culinary journey through the world of CSS and SCSS, let us remember that much like cooking, `web development` is an art form where creativity and precision go hand in hand. 🎨✨
