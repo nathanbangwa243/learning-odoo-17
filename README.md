@@ -686,3 +686,115 @@ Every `commit` should focus on a `single module`, avoiding the tangled webs of m
 And remember, fellow developer, the importance of your words cannot be overstated. Craft your `commit messages` with care, for they are the legacy you leave behind. Whether it's a `refactor`, a `bug fix`, or an `improvement`, let your message echo through the halls of code, guiding and inspiring those who follow in your footsteps.
 
 And so, dear reader, as we conclude this tale of `Git guidelines` in Odoo, let us remember the lessons learned from the culinary world. Just as a well-crafted dish delights the palate, a well-composed `commit message` brings clarity and understanding to the realm of code. 🖥️🍽️
+
+
+## Odoo Studio
+
+### Chapter 1 : Fields and Widgets in Odoo
+
+Imagine you're designing a database model. Picture it as a table or a spreadsheet. Here, fields are like the columns, storing specific types of data in each row (record). 
+
+The type of data a field holds and how it's presented on the user interface (UI) is defined by its widget. 📊
+
+Odoo offers 15 types of fields from a technical perspective, but Studio expands this choice to 20 by offering some field types multiple times with different default widgets.
+
+Let's break down these fields and their widgets in simple terms. 🛠️
+
+#### Simple Fields in Odoo
+
+1. **Text (char) ✉️ 📞 🌐**: 
+   - Stores short text. 
+   - Widgets include Badge (non-editable tag), Copy to Clipboard, Email (clickable mailto link), Image (URL-based), Phone (clickable tel link), and URL (clickable link). 
+
+2. **Multiline Text (text) 📝**: 
+   - For longer text. 
+   - Includes Copy to Clipboard widget. 
+
+3. **Integer (integer) 🔢 📊**: 
+   - Stores whole numbers. 
+   - Widgets include Percentage Pie, Progress Bar, and Handle (for ordering records). 
+
+4. **Decimal (float) 💸 ⏲️**: 
+   - Stores decimal numbers. 
+   - Widgets include Monetary, Percentage, Percentage Pie, Progress Bar, and Time (hh:mm format). 
+
+5. **Monetary (monetary) 💶**: 
+   - For monetary values. 
+   - Requires a Currency field. 
+
+6. **Html (html) 🌐**: 
+   - Editable text with HTML. 
+   - Option to disable the HTML editor.
+
+7. **Date (date) 📅**: 
+   - Select a date from a calendar. 
+   - Widget includes Remaining Days. 
+
+8. **Date & Time (datetime) 📅⏰**: 
+   - Select both date and time. 
+   - Widgets include Date (only date shown) and Remaining Days. 
+
+9. **Checkbox (boolean) ✅🔲**: 
+   - True or false value. 
+   - Widgets include Button and Toggle. 
+
+10. **Selection (selection) ⭐ 📻**: 
+   - Choose from predefined values. 
+   - Widgets include Badge, Badges, Priority (star rating), and Radio buttons. 
+
+11. **Priority (selection) ⭐⭐⭐**: 
+   - Three-star rating system, similar to a selection field with predefined values. 
+
+12. **File (binary) 📂 🖼️ 📄**: 
+   - Upload any file or sign a form. 
+   - Widgets include Image, PDF Viewer, and Sign. 
+
+13. **Image (binary) 🖼️**: 
+   - Upload and display images. 
+   - A specific type of File field. 
+
+14. **Sign (binary) ✍️**: 
+   - Electronically sign a form. 
+   - A specific type of File field. 
+
+#### Relational Fields in Odoo
+
+1. **Many2One (many2one) 🔗📻**: 
+   - Link a record from another model. 
+   - Widgets include Badge and Radio buttons. 
+
+   - ![Studio Many2One Capture](docs/images/studio-chap1-many2one.png) 
+
+1. **One2Many (one2many) 🔗🔗**: 
+   - Display multiple related records. 
+   - Needs an existing Many2One link. 
+   - ![Studio One2Many Capture](docs/images/studio-chap1-one2many.png) 
+
+2. **Lines (one2many) 📝📊**: 
+   - Create a table with rows and columns. 
+
+3. **Many2Many (many2many) ✅🏷️**: 
+   - Link multiple records from another model. 
+   - Widgets include Checkboxes and Tags. 
+   - ![Studio Many2Many Capture](docs/images/studio-chap1-many2many.png)
+
+4. **Tags (many2many) 🏷️**: 
+   - Display multiple values as tags. 
+   - A specific type of Many2Many field. 
+
+5. **Related Field (related) 🔄**: 
+   - Fetch and display information using an existing relationship. 
+
+### Field Properties
+
+1. **Invisible**: Hide fields from the UI when not necessary. 👻
+2. **Required**: Ensure fields are filled before proceeding. 🚦
+3. **Read only**: Make fields non-editable. 🔒
+4. **Label**: Display name of the field on the UI. 🏷️
+5. **Help Tooltip**: Explain the field's purpose with a tooltip. ℹ️
+6. **Placeholder**: Provide example text in the field. 💡
+7. **Widget**: Change the field's appearance or functionality. 🎨
+8. **Default value**: Set a predefined value for new records. 🆕
+9. **Limit visibility to groups**: Restrict field visibility to specific user groups. 🔐
+
+By understanding and configuring these fields and widgets in Odoo 17, you can create a robust and user-friendly database model, tailored to your specific needs. 🏗️💼
