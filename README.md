@@ -403,17 +403,19 @@ But amidst our triumphs, a cautionary tale echoed through the halls of our adven
 
 As our tale draws to a close, we stand on the threshold of a new chapter, where the user interface awaits our touch of refinement. With each constraint we add, with every line of code we write, our real estate management system evolves, poised to shape the future of property management with Odoo 17.
 
-Chapter 12: Add The Sprinkles
-
-With the formidable arsenal of constraints now firmly in place, our real estate management system stands as a fortress of data integrity, safeguarded against the specter of erroneous input. Yet, as our journey through Odoo 17 continues, we find ourselves at a pivotal juncture: the refinement of our user interface.
-
-In Chapter 11, we fortified our realm with the formidable tools of SQL and Python constraints, ensuring that our data remained pristine amidst the tumultuous currents of user interaction. Now, as we gaze upon the landscape of our real estate module, we recognize the need to add a touch of visual flair and intuitive functionality to enhance the user experience.
-
-As we embark upon Chapter 12, our mission is clear: to add the final touches that will elevate our real estate management system from a mere tool to a delightful and intuitive platform for property management.
-
 ---
 
 ## Chapter 11: Add The Sprinkles
+
+With the formidable arsenal of constraints now firmly in place, our real estate management system stands as a fortress of `data integrity`, safeguarded against the specter of erroneous input. 
+
+Yet, as our journey through `Odoo 17` continues, we find ourselves at a pivotal juncture: the refinement of our user interface.
+
+In the previous Chapter, we fortified our realm with the formidable tools of SQL and `Python constraints`, ensuring that our data remained pristine amidst the tumultuous currents of user interaction. 
+
+Now, as we gaze upon the landscape of our real estate `module`, we recognize the need to add a touch of `visual flair` and `intuitive functionality` to enhance the user experience.
+
+As we embark upon this Chapter, our mission is clear: to add the final touches that will elevate our real estate `management` system from a mere tool to a delightful and `intuitive` platform for property management.
 
 ### Adding Visual Flair:
 - We aspire to infuse our `list views` with vibrant `colors`, distinguishing properties with offers received, offers accepted, and those that have been sold or canceled.
