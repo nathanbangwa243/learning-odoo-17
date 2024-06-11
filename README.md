@@ -836,3 +836,92 @@ By understanding and configuring these fields and widgets in Odoo 17, you can cr
 Here's a summary of the "Views" section in the Odoo 17 documentation, now with some emojis to make it more engaging:
 
 ---
+
+## Chapter 2 : Views in Odoo 17 🌐
+
+Views in Odoo are like different lenses through which you can look at your data. 
+
+Imagine you have a treasure chest of information, and views are the various ways you can arrange and display that treasure to make it useful. 
+
+Each model, which you can think of as a type of data collection (like contacts or sales orders), can have several views to present the same data differently. 
+
+In Odoo Studio, views are grouped into four main categories: general, multiple records, timeline, and reporting. 🌟
+
+#### General Views 📋
+
+1. **Form View** ✍️
+   - This is used for creating and editing individual records, such as adding a new contact or editing a product. 
+   - You can organize the form using tabs and columns and control user permissions to create, edit, or delete records.
+   - ![Studio Form View Capture](docs/images/studio-chap2-form.png)
+
+2. **Activity View** 📅
+   - This view is for scheduling and viewing activities (like emails and calls) related to records. 
+   - To modify it, you need to dive into XML code in `Developer mode`.
+   - ![Studio Activity View Capture](docs/images/studio-chap2-activity.png)
+
+3. **Search View** 🔍
+   - This view helps you filter, group, and search through records. 
+   - You can add custom filters and set up autocomplete fields for a smoother search experience.
+   - ![Studio Search View Capture](docs/images/studio-chap2-search.png)
+
+
+#### Multiple Records Views 📊
+
+1. **Kanban View** 🗂️
+   - Ideal for managing workflows, this view displays records as cards that you can move across stages. 
+   - It’s especially handy for tasks and project management. 
+   - On mobile devices, Kanban view is the default instead of the List view.
+   - ![Studio Kanban View Capture](docs/images/studio-chap2-kanban.png)
+   - 
+
+2. **List View** 📑
+   - This view lets you see many records at once, making it easy to search and edit simple records. 
+   - You can enable mass editing, sort records, and control user permissions for creating, editing, or deleting records.
+   - ![Studio List View Capture](docs/images/studio-chap2-list.png)
+
+3. **Map View** 🗺️
+   - This view shows records on a map, useful for planning routes in field service applications. 
+   - You need a link to contact addresses to position the records correctly.
+   - ![Studio Map View Capture](docs/images/studio-chap2-map.png)
+
+#### Timeline Views ⏳
+
+1. **Calendar View** 📆
+   - Perfect for managing records that need scheduling, this view displays records in a calendar format. 
+   - You can enable quick creation of events and color-code records for easy identification.
+   - ![Studio Calendar View Capture](docs/images/studio-chap2-calendar.png)
+
+2. **Cohort View** 📈
+   - This view analyzes the lifecycle of records over time, useful for understanding trends like customer retention in subscription services.
+   - ![Studio Cogort View Capture](docs/images/studio-chap2-cohort.png)
+
+3. **Gantt View** 📅
+   - Used for project planning, this view shows records as bars on a timeline, helping you track progress and manage schedules. 
+   - You can customize it to show unavailable times (like weekends) and group records by categories.
+   - ![Studio Gantt View Capture](docs/images/studio-chap2-gant.png)
+
+#### Reporting Views 📊
+
+1. **Pivot View** 📊
+   - A powerful tool for data analysis, this view allows you to aggregate and explore numeric data. 
+   - You can group data by rows and columns and measure various fields to gain insights.
+   - ![Studio Pivot View Capture](docs/images/studio-chap2-pivot.png)
+
+2. **Graph View** 📉
+   - This view displays data in bar, line, or pie charts. 
+   - You can choose the default chart type, sort data, and access records directly from the chart.
+   - ![Studio Graph View Capture](docs/images/studio-chap2-graph.png)
+
+3. **Dashboard View** 📊
+   - This view combines multiple reporting views and key performance indicators into one comprehensive display, giving you an overview of important metrics at a glance.
+   - ![Studio Dashboard View Capture](docs/images/studio-chap2-dashboard.png)
+
+### Tips for Modifying Views 🛠️
+
+- To change a model's default view, navigate to Studio, select Views, use the dropdown menu (⋮), and choose "Set as Default."
+- For advanced customization, use the built-in XML editor in Developer mode. 
+- However, avoid modifying standard views directly; instead, create and edit inherited views to ensure changes persist through updates.
+
+By understanding and utilizing these different views in Odoo 17, you can effectively manage and display your data, tailoring the experience to meet your specific needs. 💡
+
+---
