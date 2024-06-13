@@ -990,3 +990,83 @@ Before importing customizations, ensure that the destination `database` contains
 Studio customizations do not automatically add underlying modules as dependencies.
 
 With these tools and features at your disposal, crafting your data in Odoo 17 becomes a seamless and intuitive experience, even for those new to the world of databases. Happy building! 🚀
+
+---
+
+### Chapter 4 : Automation Rules in Odoo 17 🛠️✨
+
+Imagine a world where your routine tasks are handled `automatically`, freeing up your time for more important work. 
+
+This is the magic of `automation rules` in Odoo 17, where you can set up automatic changes triggered by user actions, email events, time conditions, or external events.
+
+Let's explore how these automation rules work in a straightforward and simple way.
+
+#### Getting Started with Automation Rules 🎯
+
+To begin, open `Studio` and navigate to `Automations`.
+
+Click on "`New`" to create a new rule. Choose your `Trigger`, fill in the necessary fields, and then define the action you want to occur. 
+
+Save your rule, and you're done! It's as simple as that. 🚀
+
+#### Triggers: When Should the Automation Happen? 🕰️
+
+Triggers define when your automation rule will kick in.
+
+There are five main types:
+
+1. **Values Updated** 🔄: Triggers based on changes to specific fields, like adding a tag or setting a user. 
+2. **Email Events** 📧: Triggers when emails are sent or received. 
+3. **Timing Conditions** 📅: Triggers based on dates, like sending a reminder before an event. 
+4. **Custom** 📝: Triggers based on saving, deleting, or UI changes. 
+5. **External** 🌐: Triggers based on external events via webhooks. 
+
+#### Setting Up Actions: What Should Happen? 🛠️
+
+Once you have defined your `trigger`, you need to specify what action should occur. 
+
+Here are the types of actions you can set up:
+
+1. **Update Record** ✍️: Modify the fields of a record. 
+2. **Create Activity** 📅: Schedule a new activity linked to the record. 
+3. **Send Email and Send SMS** ✉️📲: Automatically send emails or text messages. 
+4. **Add Followers and Remove Followers** 👥: Manage who follows a record. 
+5. **Create Record** 📄: Generate a new record in any model. 
+6. **Execute Code** 💻: Run custom Python code. 
+7. **Send Webhook Notification** 🌐: Send data to an external system. 
+8. **Execute Existing Actions** 🔗: Trigger multiple actions at once. 
+
+#### Advanced Features and Tips 💡
+
+- **Before Update Domain** 🔍: Set conditions that must be met before the automation rule is triggered. 
+- **Extra Conditions** ✅: Add additional criteria that must be satisfied for the rule to execute. 
+- **Logging** 📝: Keep track of the data sent by external systems to ensure everything runs smoothly. 
+
+#### Practical Examples 🌟
+
+Let's say you want to automate the process of archiving old records. 
+
+You could set up a timing condition to trigger this action 7 days after the last update. 
+
+Or, if you need to send a reminder email 30 minutes before a meeting, you can create a timing condition based on the event's start time. ⏰📧
+
+![Studio Event Automated Action Capture](docs/images/studio-chap4-event.png)
+
+
+#### Webhooks: Connecting with External Systems 🌐
+
+Webhooks are powerful tools for integrating Odoo with external systems. 
+
+They work by sending HTTP(S) requests to a specified URL when certain events occur. 
+
+This allows you to automate actions based on data from other applications, ensuring seamless communication between your systems. 🤝
+
+### Conclusion
+
+Automation rules in Odoo 17 are like having an assistant who handles `repetitive` tasks for you. 
+
+By setting up these `rules`, you can streamline your `workflow`, save time, and ensure that critical `actions` are taken `automatically`. 
+
+Whether you're updating records, sending notifications, or integrating with external systems, `automation rules` make it all possible. 
+
+Start building your automation rules today and watch your `productivity` soar! 🚀✨
