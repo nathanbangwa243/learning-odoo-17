@@ -1070,3 +1070,93 @@ By setting up these `rules`, you can streamline your `workflow`, save time, and 
 Whether you're updating records, sending notifications, or integrating with external systems, `automation rules` make it all possible. 
 
 Start building your automation rules today and watch your `productivity` soar! 🚀✨
+
+---
+
+### Chapter 5 : PDF Reports in Odoo 17 🛠️📄
+
+Imagine having the power to create and `customize` PDF reports that perfectly reflect your company's style and needs. 
+
+With Odoo 17's `Studio`, you can do just that, making professional and `personalized reports` for invoices, quotations, and more. 
+
+Let's dive into this journey of transforming how you `present` your business `data`.
+
+#### Default Layout: Setting the Stage 🎨
+
+The journey begins with setting up the default layout for your reports. 
+
+Head to the Settings and under the Companies section, click **Configure Document Layout**. 
+
+Here, you can choose from four `layouts`: Light, Boxed, Bold, and Striped. You can also select from seven fonts, such as Lato and Roboto, and upload your company logo. 
+
+![Studio Document Layout Capture](docs/images/studio-chap5-layout.png)
+
+
+Adjust the primary and secondary `colors`, choose a background (like Geometric or Custom), and add your company's tagline and details. 
+
+This setup applies to all your reports, ensuring `consistency` across your documents. 
+
+#### Creating New PDF Reports: Starting Fresh 📝
+
+When you need a new report, navigate to the relevant model, toggle Studio, and click on **Reports**. 
+
+Click **New**, and choose the type of report: `External` (with a company logo and footer details), `Internal` (with user and company info), or `Blank` (no header or footer). 
+
+Once created, you can start editing the report to fit your needs.
+
+#### Editing PDF Reports: Making It Your Own ✂️
+
+To edit an existing report, select it from the Reports section in Studio. 
+
+It's recommended to `duplicate` the standard report first, ensuring the original remains unchanged. 
+
+![Studio Duplicate report Capture](docs/images/studio-chap5-duplicate.png)
+
+
+Use the options on the left to `rename` the report, change its paper format, and set its `visibility` to specific user groups. 
+
+You can also add the report to the **Print** menu and `reset` it to its default state if needed.
+
+#### Report Editor: Tools at Your Fingertips 🛠️
+
+The `report editor` is where the real customization happens. You can `modify` formatting and content directly. 
+
+Use commands to add fields, tables, images, and more. Type `/` to open the powerbox and choose what you need. 
+
+![Studio Add Field to report Capture](docs/images/studio-chap5-addfield.png)
+
+For instance, add a field by selecting the **Field** command, find the field you want, and insert it. 
+
+Similarly, add `data table`s to display relational fields, and format your text using the text editor.
+
+#### Conditional Blocks and Dynamic Content 🔄
+
+Conditional blocks (dashed rectangles) let you show or hide content based on specific conditions. 
+
+For example, display different information depending on the status of an order. 
+
+These `conditions` are set in `XML`, but you can `preview` and adjust them in the editor.
+
+Dynamic text, highlighted in blue, automatically updates with field values when the report is generated. 
+
+For instance, the SO number or quotation date will appear `dynamically` in the final report.
+
+#### Advanced Customization: Editing XML 💻
+
+For those needing advanced customization, you can edit the report's `XML` directly. 
+
+This allows for precise `control` over the report's structure and content. 
+
+However, be `cautious`, as direct XML edits might cause issues during system upgrades. If problems arise, simply copy your changes from the old `database` into the new one.
+
+### Conclusion 🚀
+
+Creating and editing PDF reports in Odoo 17 is like painting a masterpiece. 
+
+With Studio, you have the tools to craft documents that are not only `functional` but also `beautifully` tailored to your business's identity. 
+
+From setting up the default `layout` to diving deep into `XML` edits, Odoo empowers you to present your `data` in the best possible light. 
+
+Start your journey today and see how easy it is to create stunning `reports` that make an impact. 🚀📊
+
+---
