@@ -1215,3 +1215,123 @@ If you prefer watching videos, here is a great tutorial on the topic:
 With its robust features, automated processes, and collaborative tools, `Odoo.sh` empowers you to focus on building and enhancing your applications without worrying about infrastructure management.
 
 Dive into `Odoo.sh` and discover how it can elevate your Odoo projects to new heights. 🚀☁️
+
+---
+
+### Chapter 2 : Create Your Project on Odoo.sh 🚀
+
+#### 1. Deploying Your Platform 🌐
+
+Once you're ready to create your Odoo project, head over to [Odoo.sh](https://www.odoo.sh/) and click on the **Deploy your platform** button.
+
+![odoo.sh deploy Capture](docs/images/odoosh-chap2-deploy.png)
+
+#### 2. Sign in with GitHub 🔗
+
+Next, sign in with your `GitHub` account. If you don't have one, simply click on the **Create an account** link to get started.
+
+![odoo.sh signin Capture](docs/images/odoosh-chap2-signin.png)
+
+
+#### 3. Authorize Odoo.sh ✅
+
+You'll need to `authorize` Odoo.sh to access your GitHub account. 
+
+![odoo.sh authorize Capture](docs/images/odoosh-chap2-authorize.png)
+
+
+This is crucial because Odoo.sh needs permissions to:
+- `Know` your GitHub login and email.
+- `Create` a new `repository` if you’re starting from scratch.
+- `Read` your existing repositories if you’re using one.
+- `Create` a `webhook` for updates when you push changes.
+- `Commit` changes to streamline your deployment.
+
+#### 4. Submit Your Project 📝
+
+Decide whether to start from scratch or use an existing `repository`. Then, name your repository or select an existing one and choose the `Odoo version` you want to use. 
+
+If you have a `subscription code`, enter it here. This code is tied to your `Enterprise subscription`, which includes `Odoo.sh`.
+
+![odoo.sh submit Capture](docs/images/odoosh-chap2-submit.png)
+
+
+If your subscription isn't valid, it could mean:
+- It doesn't exist.
+- It’s not a partnership subscription.
+- It’s an Enterprise subscription that doesn't include `Odoo.sh`.
+- It’s another type of subscription (e.g., online subscription).
+
+If you're unsure, contact `Odoo support` for assistance.
+
+#### 5. You're Done! 🎉
+
+Your platform is now being created. Soon, you'll be able to connect to your first `database`.
+
+![odoo.sh done Capture](docs/images/odoosh-chap2-done.png)
+
+
+#### Importing Your Database 📥
+
+You can import your database into your `Odoo.sh` project if it’s a supported version.
+
+#### Pushing Your Modules to Production 🛠️
+
+For `custom` or community `modules`, add them to a branch in your GitHub repository. `Odoo.sh` will detect the folders containing `Odoo addons`. 
+
+You can structure your `modules` as you like, either at the root or in categorized folders.
+
+For publicly available community modules, consider adding them as `submodules`. Make this branch your production branch or merge it into an existing one.
+
+#### Downloading a Backup 💾
+
+##### On-Premise Databases 🖥️
+
+Access the URL `/web/database/manager` of your on-premise database and download a backup. 
+
+![odoo.sh download Capture](docs/images/odoosh-chap2-download.png)
+
+
+You'll need the `master password` of your database server. If you don't have it, contact your system administrator.
+
+![odoo.sh password Capture](docs/images/odoosh-chap2-password.png)
+
+
+##### Odoo Online Databases 🌐
+
+Access your database manager and download a backup. Note that online versions (e.g., saas-*) are not supported on `Odoo.sh`.
+
+![odoo.sh online Capture](docs/images/odoosh-chap2-online.png)
+
+
+#### Uploading the Backup 📤
+
+In your `Odoo.sh` project, go to the backups tab of your production branch and import the backup.
+
+![odoo.sh upload Capture](docs/images/odoosh-chap2-upload.png)
+
+
+Once imported, you can access the database using the **Connect** button.
+
+![odoo.sh connect Capture](docs/images/odoosh-chap2-connect.png)
+
+
+### Checking Outgoing Email Servers 📧
+
+`Odoo.sh` provides a default mail server. Ensure no outgoing mail server is enabled in your database settings. 
+
+After importing your database, all outgoing email servers are `disabled` by default.
+
+### Checking Scheduled Actions ⏰
+
+Scheduled actions are `disabled` after the import to prevent any unintended operations. 
+
+If you plan to use the imported database in production, `enable` the necessary scheduled actions. 
+
+These can be found under **Settings ‣ Technical ‣ Automation ‣ Scheduled Actions**.
+
+### Registering Your Subscription 🔄
+
+After importing, your subscription will be `unlinked`. 
+
+Unlink your former database from the `subscription` and register the new one by following the database `registration` documentation.
