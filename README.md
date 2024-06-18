@@ -1182,11 +1182,7 @@ Whether you're a developer, a business owner, or an IT manager, `Odoo.sh` provid
 
 If you prefer watching videos, here is a great tutorial on the topic:
 
-[Watch this video](https://youtu.be/QuNsa9n9PMg)
-
-Or you can watch it directly here:
-
-<iframe width="560" height="315" src="https://youtu.be/QuNsa9n9PMg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[🎬 Watch this video](https://youtu.be/QuNsa9n9PMg)
 
 
 #### Key Features of Odoo.sh 🔑
