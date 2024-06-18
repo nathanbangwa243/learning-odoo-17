@@ -726,7 +726,7 @@ And so, dear reader, as we conclude this tale of `Git guidelines` in Odoo, let u
 
 ## Odoo Studio
 
-## Chapter 1 : Fields and Widgets in Odoo
+### Chapter 1 : Fields and Widgets in Odoo
 
 Imagine you're designing a database model. Picture it as a table or a spreadsheet. Here, fields are like the columns, storing specific types of data in each row (record). 
 
@@ -839,7 +839,7 @@ Here's a summary of the "Views" section in the Odoo 17 documentation, now with s
 
 ---
 
-## Chapter 2 : Views in Odoo 17 🌐
+### Chapter 2 : Views in Odoo 17 🌐
 
 Views in Odoo are like different lenses through which you can look at your data. 
 
@@ -918,7 +918,7 @@ In Odoo Studio, views are grouped into four main categories: general, multiple r
    - This view combines multiple reporting views and key performance indicators into one comprehensive display, giving you an overview of important metrics at a glance.
    - ![Studio Dashboard View Capture](docs/images/studio-chap2-dashboard.png)
 
-### Tips for Modifying Views 🛠️
+#### Tips for Modifying Views 🛠️
 
 - To change a model's default view, navigate to Studio, select Views, use the dropdown menu (⋮), and choose "Set as Default."
 - For advanced customization, use the built-in XML editor in Developer mode. 
@@ -1061,7 +1061,7 @@ They work by sending HTTP(S) requests to a specified URL when certain events occ
 
 This allows you to automate actions based on data from other applications, ensuring seamless communication between your systems. 🤝
 
-### Conclusion
+#### Conclusion
 
 Automation rules in Odoo 17 are like having an assistant who handles `repetitive` tasks for you. 
 
@@ -1149,7 +1149,7 @@ This allows for precise `control` over the report's structure and content.
 
 However, be `cautious`, as direct XML edits might cause issues during system upgrades. If problems arise, simply copy your changes from the old `database` into the new one.
 
-### Conclusion 🚀
+#### Conclusion 🚀
 
 Creating and editing PDF reports in Odoo 17 is like painting a masterpiece. 
 
