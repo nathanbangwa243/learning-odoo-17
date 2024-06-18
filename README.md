@@ -1160,3 +1160,62 @@ From setting up the default `layout` to diving deep into `XML` edits, Odoo empow
 Start your journey today and see how easy it is to create stunning `reports` that make an impact. 🚀📊
 
 ---
+
+## Odoo SH
+
+### Chapter 1: Introduction to Odoo.sh 🚀☁️
+
+After mastering the art of customizing Odoo 17 with `Odoo Studio`, it's time to delve into the powerful world of `Odoo.sh`. 
+
+Odoo.sh is a comprehensive platform-as-a-service (PaaS) designed to make deploying, managing, and scaling your Odoo applications a seamless experience. 
+
+Let's embark on this journey to understand how `Odoo.sh` can revolutionize your Odoo development and deployment process.
+
+#### What is Odoo.sh ? 🌐
+
+`Odoo.sh` is a cloud platform tailored specifically for Odoo applications. 
+
+It combines the flexibility of `cloud hosting` with the robust features of Odoo, allowing you to develop, test, and deploy your Odoo instances effortlessly. 
+
+Whether you're a developer, a business owner, or an IT manager, `Odoo.sh` provides the tools you need to ensure your Odoo `environment` is secure, scalable, and easy to manage.
+
+
+If you prefer watching videos, here is a great tutorial on the topic:
+
+[Watch this video](https://youtu.be/QuNsa9n9PMg)
+
+Or you can watch it directly here:
+
+<iframe width="560" height="315" src="https://youtu.be/QuNsa9n9PMg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+#### Key Features of Odoo.sh 🔑
+
+1. **Automatic Deployment** 🚀
+   - Odoo.sh automates the deployment process, allowing you to push your changes to a staging environment or directly to production with a single click. 
+   - This ensures that your updates are consistently and reliably applied.
+
+2. **Continuous Integration (CI)** 🔄
+   - With `built-in CI`, every change you push is automatically `tested`. 
+   - This helps catch and `fix issues` early, ensuring your application remains stable and functional.
+
+3. **Backups and Security** 🔐
+   - Odoo.sh takes care of your data with automatic `daily backups` and robust security measures. 
+   - This means your data is safe and can be restored easily if needed.
+
+4. **Scalability** 📈
+   - The platform is designed to scale with your business. 
+   - You can easily adjust resources to meet the demands of your growing application, ensuring optimal performance.
+
+5. **Collaboration Tools** 🤝
+   - Odoo.sh includes features that facilitate collaboration among team members, such as branch management, merge requests, and automated testing environments. 
+   - This streamlines the development process and enhances team productivity.
+
+
+#### Conclusion 🌈
+
+`Odoo.sh` is more than just a hosting solution; it's a complete platform that streamlines the development, deployment, and management of your Odoo applications. 
+
+With its robust features, automated processes, and collaborative tools, `Odoo.sh` empowers you to focus on building and enhancing your applications without worrying about infrastructure management.
+
+Dive into `Odoo.sh` and discover how it can elevate your Odoo projects to new heights. 🚀☁️
