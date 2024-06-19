@@ -1335,3 +1335,117 @@ These can be found under **Settings ‣ Technical ‣ Automation ‣ Scheduled A
 After importing, your subscription will be `unlinked`. 
 
 Unlink your former database from the `subscription` and register the new one by following the database `registration` documentation.
+
+---
+
+### Chapter 3 : Odoo.sh Branches 🌿
+
+Imagine you’re an explorer, setting up your adventure base camp with `Odoo.sh`. 
+
+Here’s your journey through managing `branches` in a way that's easy to grasp, even if you’re new to the tech world.
+
+#### Discovering Your Branches 🌲
+
+Your repository is like a tree, and branches are its limbs, each holding different parts of your project. 
+
+The `branches` view gives you a map of these limbs, helping you see where each one stands.
+
+![odoo.sh branches Capture](docs/images/odoosh-chap3-branches.png)
+
+#### The Three Stages: Production, Staging, and Development 🚀
+
+Think of your branches moving through three main stages: production, staging, and development.
+
+![odoo.sh stages Capture](docs/images/odoosh-chap3-stages.png)
+
+##### 1. **Production Branch: The Heartbeat of Your Project ❤️**
+The `production` branch is your `main` branch, where your live project runs. It’s like the main base camp where everything is `up` and `running`. 
+
+When you `push` new `changes` here, your server updates and restarts to include the latest `improvements`. If there’s a hitch, the system `rolls back` to the last working `version`, ensuring everything stays smooth.
+
+##### 2. **Staging Branch: Your Testing Ground 🧪**
+
+`Staging` branches are your `testing` grounds, safe zones where you test `new features` using `real data` without affecting your `main` base camp. 
+
+Here, scheduled actions are `paused`, emails are `intercepted`, and services like payments are set to `test mode`. 
+
+It’s like `practicing` a drill before the actual adventure.
+
+##### 3. **Development Branch: The Workshop 🛠️**
+
+`Development` branches are your `workshops`. They use `demo data` to run tests and ensure your `new changes` don’t break anything. 
+
+When you `push` updates here, a new `environment` is created from scratch, loaded with `demo data`, and all `tests` are run automatically.
+
+#### Merging Branches: Bringing It All Together 🔄
+
+`Merging` branches in `Odoo.sh` is like combining paths in your map. You can `drag` and `drop` branches into each other to merge them. 
+
+![odoo.sh merging Capture](docs/images/odoosh-chap3-merging.png)
+
+For example:
+- To `test` new changes, `merge` your development branch into a staging branch.
+- When changes are ready for live use, `merge` your staging branch into the production branch.
+
+You can also use `git merge` commands if you prefer working directly from your workstation.
+
+#### Additional Tools and Tabs 🛠️📊
+
+##### **History: The Journal of Your Journey 📜**
+
+This tab records every change, commit, and event, like a detailed `journal` of your adventure. 
+
+You can see `who` made changes, `what` was changed, and the `outcome` of each event.
+
+![odoo.sh history Capture](docs/images/odoosh-chap3-history.png)
+
+##### **Mails: Capturing the Communication 📧**
+
+The `mail catcher` tab shows all the emails sent from your database, but only for development and staging branches, ensuring no `test emails` bother your real contacts.
+
+![odoo.sh mails Capture](docs/images/odoosh-chap3-mails.png)
+
+##### **Shell: Command Center 🖥️**
+
+This is your command center, where you can run `basic commands` and open a shell to interact directly with your database.
+
+![odoo.sh shell Capture](docs/images/odoosh-chap3-shell.png)
+
+
+##### **Editor: Your Coding Canvas 🎨**
+
+The `online` integrated development environment (`IDE`) is where you write and edit your code. It supports multiple tabs and various tools to streamline your development process.
+
+![odoo.sh editor Capture](docs/images/odoosh-chap3-editor.png)
+
+
+##### **Monitoring: Keeping an Eye on Things 👀**
+
+Here, you’ll find graphs and `metrics` monitoring your `builds`. You can zoom in, adjust time ranges, and see annotations related to changes.
+
+![odoo.sh monitoring Capture](docs/images/odoosh-chap3-monitoring.png)
+
+
+##### **Logs: The Chronicles of Your Server 📚**
+
+The `logs` tab shows detailed records of server activities. You can view `logs` for installations, updates, and server `operations`.
+
+![odoo.sh logs Capture](docs/images/odoosh-chap3-logs.png)
+
+##### **Backups: Safety Nets 🛡️**
+
+Backups are your safety nets. `Odoo.sh` automatically `backs up` your `production` database `daily`, keeping copies for a `month`. You can also manually create backups before `major changes` to ensure you have a `restore point` if things go awry.
+
+![odoo.sh backup Capture](docs/images/odoosh-chap3-backup.png)
+
+#### Branch Settings: Tailoring Your Adventure ⚙️
+
+In the settings tab, you can `customize` how branches behave upon new commits, select modules to install, enable or disable tests, and set the `Odoo` version. 
+
+You can also configure `custom domains` and ensure your outgoing emails comply with `SPF` and `DKIM` standards for better deliverability.
+
+![odoo.sh domains Capture](docs/images/odoosh-chap3-domains.png)
+
+![odoo.sh behavior Capture](docs/images/odoosh-chap3-behavior.png)
+
+By following this storytelling approach, you’ll navigate through `Odoo.sh` branches with ease, understanding each step as part of your exciting journey into `Odoo` development. 🌟
