@@ -1316,13 +1316,13 @@ Once imported, you can access the database using the **Connect** button.
 ![odoo.sh connect Capture](docs/images/odoosh-chap2-connect.png)
 
 
-### Checking Outgoing Email Servers 📧
+#### Checking Outgoing Email Servers 📧
 
 `Odoo.sh` provides a default mail server. Ensure no outgoing mail server is enabled in your database settings. 
 
 After importing your database, all outgoing email servers are `disabled` by default.
 
-### Checking Scheduled Actions ⏰
+#### Checking Scheduled Actions ⏰
 
 Scheduled actions are `disabled` after the import to prevent any unintended operations. 
 
@@ -1330,7 +1330,7 @@ If you plan to use the imported database in production, `enable` the necessary s
 
 These can be found under **Settings ‣ Technical ‣ Automation ‣ Scheduled Actions**.
 
-### Registering Your Subscription 🔄
+#### Registering Your Subscription 🔄
 
 After importing, your subscription will be `unlinked`. 
 
