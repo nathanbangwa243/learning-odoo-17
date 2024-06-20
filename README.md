@@ -1525,10 +1525,98 @@ By following this storytelling approach, you’ll navigate through `Odoo.sh` bui
 
 ---
 
-### Chapter 4 : Odoo.sh Status 🌿
+### Chapter 5 : **Status** Tab in Odoo.sh 🌿
 
 The **Status** tab on Odoo.sh serves as your main dashboard to monitor the health and performance of your project. It's like a command center where you can keep an eye on your application's vital signs.
 
 ![odoo.sh status Capture](docs/images/odoosh-chap5-status.png)
 
 The **Status** tab on Odoo.sh is a powerful tool for maintaining the health and performance of your project. By regularly monitoring this tab, you can anticipate problems, optimize resources, and ensure a smooth and reliable user experience. 🚀
+
+---
+
+### Chapter 6 :  **Settings** Tab in Odoo.sh 📖
+
+Imagine you're the captain of a ship navigating through the vast ocean of project management on `Odoo.sh`. The **Settings** tab is your control room, where you configure and fine-tune everything to ensure smooth sailing.
+
+![odoo.sh settings Capture](docs/images/odoosh-chap6-settings.png)
+
+
+#### Project Name and Address 🌐
+
+First, you name your ship. This name sets the address where your production database can be accessed. 
+
+It's like giving your ship a **unique identifier**. When you rename your project, future builds will sail under this new name, but past voyages retain their original names.
+
+![odoo.sh name Capture](docs/images/odoosh-chap6-name.png)
+
+#### Collaborators 🚀
+
+![odoo.sh Collaborators Capture](docs/images/odoosh-chap6-collaborators.png)
+
+Your crew is essential for a successful voyage. You manage your crew through the **Collaborators** section. There are two types of crew members:
+
+1. **Admins**: They have full access to all features on `Odoo.sh`, akin to your first mates who can navigate any part of the ship.
+2. **Users**: These are like your deckhands, skilled in coding but restricted from accessing **sensitive** areas like the production data or the ship’s logs.
+
+**Admins** can use all tools available, while **Users** can only modify code without touching the critical data.
+
+![odoo.sh Collaborators Types Capture](docs/images/odoosh-chap6-collaborators-types.png)
+
+
+#### Public Access 🗝️
+
+Sometimes, you might want to show off your ship's development progress to the public.By enabling **Public Access**, you allow visitors to view your development builds, logs, shell, and emails. 
+
+![odoo.sh Access Capture](docs/images/odoosh-chap6-access.png)
+
+However, your production and staging areas remain off-limits, maintaining their security.
+
+#### Custom Domains 🌍
+
+If you want your ship to be recognized by multiple names (domains), you can configure this in the **Custom Domains** section. Each branch of your project can be assigned a different domain, making your ship known by various identities.
+
+#### Submodules 🧩
+
+Your ship may rely on additional resources from private repositories. To access these, you need to set up **Deploy Keys**. 
+
+This is like giving special **permission** to retrieve secret supplies from these private sources. You provide the `SSH URL` of the private repository, add it, and then copy and paste the `public key` to the repository's settings.
+
+![odoo.sh submodules Capture](docs/images/odoosh-chap6-submodules.png)
+
+
+#### Storage Size 📦
+
+Every ship needs to monitor its cargo. The **Storage Size** section shows how much space your project is using, including the `PostgreSQL` database and disk files in your container. 
+
+![odoo.sh storage Capture](docs/images/odoosh-chap6-storage.png)
+
+
+If you exceed your storage limits, the system automatically synchronizes with your subscription to accommodate the growth.
+
+#### Database Workers 🛠️
+
+To handle more tasks simultaneously, you can add more **Database Workers**. This is like hiring additional crew members to manage the increased workload. 
+
+![odoo.sh workers Capture](docs/images/odoosh-chap6-workers.png)
+
+However, it’s important to note that adding more workers won’t solve all performance issues; sometimes the problem lies deeper within the code.
+
+#### Staging Branches 🌱
+
+You can develop and test multiple features at once by adding more **Staging Branches**. 
+
+![odoo.sh staging Capture](docs/images/odoosh-chap6-staging.png)
+
+
+This allows you to conduct various experiments without interfering with your main operations, ensuring that your ship's journey remains uninterrupted.
+
+#### Activation 🔑
+
+Finally, the **Activation** section shows the status of your project's activation. Here, you can change the activation code if needed, ensuring that your ship remains operational and ready to sail.
+
+![odoo.sh activation Capture](docs/images/odoosh-chap6-activation.png)
+
+#### Conclusion 🌅
+
+The **Settings** tab in Odoo.sh is your essential toolkit for managing and configuring your project. By carefully adjusting these settings, you can ensure that your project runs smoothly and efficiently, just like a well-navigated ship on a successful voyage. 🚀
