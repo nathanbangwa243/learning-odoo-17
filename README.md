@@ -1525,10 +1525,12 @@ By following this storytelling approach, you’ll navigate through `Odoo.sh` bui
 
 ---
 
-### Chapter 4 : Odoo.sh Status 🌿
+### Chapter 5 : **Status** Tab in Odoo.sh 🌿
 
 The **Status** tab on Odoo.sh serves as your main dashboard to monitor the health and performance of your project. It's like a command center where you can keep an eye on your application's vital signs.
 
 ![odoo.sh status Capture](docs/images/odoosh-chap5-status.png)
 
 The **Status** tab on Odoo.sh is a powerful tool for maintaining the health and performance of your project. By regularly monitoring this tab, you can anticipate problems, optimize resources, and ensure a smooth and reliable user experience. 🚀
+
+---
