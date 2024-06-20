@@ -1449,3 +1449,76 @@ You can also configure `custom domains` and ensure your outgoing emails comply w
 ![odoo.sh behavior Capture](docs/images/odoosh-chap3-behavior.png)
 
 By following this storytelling approach, you’ll navigate through `Odoo.sh` branches with ease, understanding each step as part of your exciting journey into `Odoo` development. 🌟
+
+---
+
+### Chapter 4 : Odoo.sh Builds 🌿
+
+Imagine you're setting up a project base in `Odoo.sh`. Here’s your journey through understanding and managing `builds`, explained in a way that even beginners can follow.
+
+#### What Are Builds? 🏗️
+
+In `Odoo.sh`, a build is like a `test run` of your project. It involves loading your database on an Odoo server within a `containerized` environment. 
+
+Think of it as a rehearsal to ensure everything works smoothly.
+
+#### The Build Overview 🛠️
+
+In the builds view, each `row` represents a `branch` of your project, and each `cell` in that row represents a `build` of that branch.
+
+![odoo.sh overview Capture](docs/images/odoosh-chap4-overview.png)
+
+##### When Builds Are Created 📅
+
+Builds are typically created whenever you `push` updates to your GitHub `repository` branches. They can also occur when you `import` a database into `Odoo.sh` or manually trigger a `rebuild` for a branch.
+
+##### Build Status 🚦
+- **Successful Builds** 🟢: Highlighted in `green`, meaning no errors or warnings.
+- **Failed Builds** 🔴: Highlighted in `red`, indicating errors occurred.
+- **Almost Successful Builds** 🟡: Highlighted in `yellow`, showing warnings but no critical errors.
+
+#### How Builds Work 🌍
+
+Builds don't always start a database from scratch. 
+
+For example, `pushing` changes to the production branch starts the server with your new `revision` and tries to load the `current` production database. If it works without errors, it's successful.
+
+#### The Three Build Stages: Production, Staging, and Development 🚀
+
+##### 1. **Production Stage: The Main Base Camp 🏕️**
+
+The first `build` of your production branch creates the `main` database. Subsequent `pushes` create new builds that attempt to `update` this database with the `latest` changes. 
+
+If a build `fails`, the system reverts to the last `successful` build to keep everything running smoothly.
+
+##### 2. **Staging Stage: The Testing Ground 🧪**
+
+`Staging` builds create `copies` of your production database. Each `new push` on a staging branch uses a `fresh copy`, ensuring you test with `up-to-date` data. 
+
+Changes made here don’t affect the `production` database, so you can experiment freely. Remember, `configuration` changes in staging don’t carry over unless `applied` to production.
+
+##### 3. **Development Stage: The Workshop 🛠️**
+
+Development builds create `new` databases with `demo data` and run `unit tests`. 
+
+These tests check for `errors`, and a build is marked as `failed` if any tests fail. Successful builds mean all tests `passed` without issues. 
+
+Depending on the number of modules, these builds can take up to an `hour`.
+
+#### Navigating Builds and Branches 🌳
+
+##### Features 🛡️
+
+- **Production Branch**: Always appears first, followed by other branches `sorted` by the last build created. You can `filter` branches to find what you need.
+- ![odoo.sh features Capture](docs/images/odoosh-chap4-features.png)
+- **Accessing Builds**: Use the `Connect` link to access a build’s database. Jump to the `branch code` with the `GitHub` link. You can create a `new build` with the latest revision using the `rebuild` link, provided no other build is in progress.
+- ![odoo.sh accessing Capture](docs/images/odoosh-chap4-accessing.png)
+
+##### Build Details 🔍
+
+For each build:
+- **Revision Changes**: Click the GitHub icon to see what changed.
+- **Database Access**: Use the `Connect` button to access the database as an `admin`. The dropdown menu lets you `connect as` another user, check logs, use the web shell, edit code, manage outgoing emails, and download a database dump.
+- ![odoo.sh menu Capture](docs/images/odoosh-chap4-menu.png)
+
+By following this storytelling approach, you’ll navigate through `Odoo.sh` builds with ease, understanding each step as part of your exciting journey into Odoo development. 🌟
