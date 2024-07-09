@@ -1,12 +1,3 @@
-version: "1.0"
-
-linter:
-  name: jetbrains/qodana-python
-  version: 2021.3
-
-ide:
-  version: 2021.3
-
 name: Qodana
 on:
   workflow_dispatch:
