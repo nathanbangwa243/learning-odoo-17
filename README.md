@@ -1689,3 +1689,234 @@ In the Odoo Shell console, you can interact with the Odoo registry and model met
 ![odoo.sh registry Capture](docs/images/odoosh-chap7-registry.png)
 
 Be cautious, as changes are automatically committed to the database ⚠️. You can invoke database models using `env` and display lists and dicts prettily with the `Pretty` class 🌟.
+
+---
+
+### Chapter 8 : Your first module with Odoo.sh 🚀
+
+#### Overview
+
+In this chapter, we'll walk you through creating your very first Odoo module and deploying it in your Odoo.sh project. 
+
+It's a straightforward process, even if you're new to Git and GitHub. Let's get started! 🌟
+
+#### Getting Ready
+
+Before diving in, make sure you have:
+
+1. A project on Odoo.sh.
+2. Your GitHub repository URL.
+
+We'll assume the following setup:
+
+- `~/src` is your directory for Odoo projects.
+- `odoo` is the GitHub user.
+- `odoo-addons` is the GitHub repository.
+- `feature-1` is your development branch.
+- `master` is your production branch.
+- `my_module` is your module name.
+
+Feel free to replace these with your own values.
+
+#### Creating the Development Branch
+
+![odoo.sh creating Capture](docs/images/odoosh-chap8-creating.png)
+![odoo.sh creating Capture](docs/images/odoosh-chap8-creating1.png)
+
+*From Odoo.sh:*
+
+1. Go to the branches view.
+2. Click the + button next to the development stage.
+3. Choose the `master` branch in the Fork selection.
+4. Type `feature-1` in the "To" input field.
+
+*From Your Computer:*
+
+1. Open your terminal and clone your GitHub repository:
+
+    ```bash
+    mkdir ~/src
+    cd ~/src
+    git clone https://github.com/odoo/odoo-addons.git
+    cd ~/src/odoo-addons
+    ```
+
+2. Create a new branch:
+
+    ```bash
+    git checkout -b feature-1 master
+    ```
+
+#### Creating the Module Structure
+
+*Scaffolding the Module:*
+
+1. Open a terminal in the Odoo.sh editor or your computer.
+2. Run the scaffolding command:
+
+    ```bash
+    odoo-bin scaffold my_module ~/src/user/
+    ```
+
+    or
+
+    ```bash
+    ./odoo-bin scaffold my_module ~/src/odoo-addons/
+    ```
+
+This generates the basic structure for your module, making it easier to get started.
+
+#### Module Structure:
+
+- `my_module/`
+  - `__init__.py`
+  - `__manifest__.py`
+  - `controllers/`
+    - `__init__.py`
+    - `controllers.py`
+  - `demo/`
+    - `demo.xml`
+  - `models/`
+    - `__init__.py`
+    - `models.py`
+  - `security/`
+    - `ir.model.access.csv`
+  - `views/`
+    - `templates.xml`
+    - `views.xml`
+
+#### Editing the Module Files
+
+Uncomment the content in the following files to define your module’s behavior:
+
+- `models/models.py`
+- `views/views.xml`
+- `demo/demo.xml`
+- `controllers/controllers.py`
+- `views/templates.xml`
+- `__manifest__.py`
+
+#### Pushing Your Changes
+
+1. Stage your changes:
+
+    ```bash
+    git add my_module
+    ```
+
+2. Commit your changes:
+
+    ```bash
+    git commit -m "My first module"
+    ```
+
+3. Push your changes to GitHub:
+
+    *From Odoo.sh:*
+
+    ```bash
+    git push https HEAD:feature-1
+    ```
+
+    *From your computer:*
+
+    ```bash
+    git push -u origin feature-1
+    ```
+
+#### Testing Your Module
+
+Your new branch should appear in your project's development branches. 
+
+![odoo.sh testing Capture](docs/images/odoosh-chap8-testing.png)
+
+You can test your module by accessing the development build and creating new records to see how your features work.
+
+#### Testing with Production Data
+
+1. Make your development branch a staging branch or merge it into an existing staging branch.
+
+![odoo.sh testing production Capture](docs/images/odoosh-chap8-testing-prod.png)
+![odoo.sh testing staging Capture](docs/images/odoosh-chap8-testing-stag.png)
+
+2. This creates a new staging build using the latest changes from your branch.
+
+![odoo.sh build staging Capture](docs/images/odoosh-chap8-build.png)
+
+#### Deploying to Production
+
+Once you're satisfied with your module's performance in staging, merge your branch into the production branch. 
+
+![odoo.sh deploy Capture](docs/images/odoosh-chap8-deploy.png)
+
+This will update your production server with the latest changes.
+
+![odoo.sh update Capture](docs/images/odoosh-chap8-update.png)
+
+#### Adding a Change
+
+To add a new field to your module:
+
+1. Open `models/models.py` and add:
+
+    ```python
+    start_datetime = fields.Datetime('Start time', default=lambda self: fields.Datetime.now())
+    ```
+
+2. Open `views/views.xml` and add:
+
+    ```xml
+    <field name="start_datetime"/>
+    ```
+
+3. Update the module version in `__manifest__.py`:
+
+    ```python
+    'version': '0.2',
+    ```
+
+4. Stage, commit, and push your changes:
+
+    ```bash
+    git add my_module
+    git commit -m "[ADD] my_module: add start_datetime field"
+    git push https HEAD:feature-1
+    ```
+
+The platform will then create a new build for the branch feature-1.
+
+![odoo.sh adding change Capture](docs/images/odoosh-chap8-adding.png)
+
+#### Using an External Python Library
+
+To use an external library like Unidecode:
+
+1. Create a `requirements.txt` file and add:
+
+    ```plaintext
+    unidecode
+    ```
+
+2. Use the library in your module:
+
+    ```python
+    from unidecode import unidecode
+
+    @api.model
+    def create(self, values):
+        if 'name' in values:
+            values['name'] = unidecode(values['name'])
+        return super(my_module, self).create(values)
+
+    def write(self, values):
+        if 'name' in values:
+            values['name'] = unidecode(values['name'])
+        return super(my_module, self).write(values)
+    ```
+
+3. Update the module version to `0.3` in `__manifest__.py`.
+4. Stage, commit, and push your changes.
+
+With these steps, you've created your first Odoo module, tested it, and deployed it in production. 
+
+Congratulations! 🎉
