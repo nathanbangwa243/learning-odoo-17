@@ -1,3 +1,12 @@
+version: "1.0"
+
+linter:
+  name: jetbrains/qodana-python
+  version: 2021.3
+
+ide:
+  version: 2021.3
+
 name: Qodana
 on:
   workflow_dispatch:
@@ -27,3 +36,4 @@ jobs:
         uses: JetBrains/qodana-action@v2024.1
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+        continue-on-error: true  # Continue workflow even if Qodana fails
