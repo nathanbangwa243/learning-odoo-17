@@ -1620,3 +1620,72 @@ Finally, the **Activation** section shows the status of your project's activatio
 #### Conclusion 🌅
 
 The **Settings** tab in Odoo.sh is your essential toolkit for managing and configuring your project. By carefully adjusting these settings, you can ensure that your project runs smoothly and efficiently, just like a well-navigated ship on a successful voyage. 🚀
+
+---
+
+### Chapter 7 : Online Editor in Odoo.sh ✨
+
+#### Overview
+
+Imagine you're about to dive into the world of Odoo 17. With Odoo.sh, you have a powerful online editor at your fingertips, accessible right from your web browser 🌐. 
+
+![odoo.sh editor Capture](docs/images/odoosh-chap7-editor.png)
+
+This editor allows you to modify the source code of your builds, open terminals, Python consoles, Odoo Shell consoles, and even Notebooks 📚.
+
+#### Accessing the Editor
+
+Getting to the editor is straightforward 🚀. You can reach it through the branches tabs, the builds dropdown menu, or by adding `/odoo-sh/editor` to your build's domain name.
+
+#### Editing the Source Code
+
+![odoo.sh editing Capture](docs/images/odoosh-chap7-editing.png)
+
+Within the editor, you find a structured working directory 🗂️:
+
+- **home/odoo/src/**: Contains the source codes for Odoo Community, Odoo Enterprise, Odoo Themes, and your repository branch.
+- **home/odoo/data/**: Holds database attachments and user session files.
+- **home/odoo/logs/**: Keeps logs for database installations, server runs, database updates, and Python package installations.
+
+You can edit the source code in development and staging builds. However, remember that any changes you make won't persist unless you commit them to your source code 📝.
+
+#### Making and Saving Changes
+
+To edit a file, just double-click it in the file browser 🖱️. Save your changes via the File menu or with the Ctrl+S shortcut 💾. 
+
+![odoo.sh saving Capture](docs/images/odoosh-chap7-saving.png)
+
+If you save a Python file within the Odoo server addons path, Odoo will automatically reload it to reflect your changes instantly. For changes stored in the database, like field labels or views, you'll need to update the corresponding module 🔄.
+
+
+#### Committing and Pushing Changes
+
+![odoo.sh pushing Capture](docs/images/odoosh-chap7-pushing.png)
+
+Once you're satisfied with your changes, you can commit and push them to your GitHub repository 📤:
+
+1. Open a terminal (File ‣ New ‣ Terminal) 💻.
+2. Navigate to your user directory: `cd ~/src/user` 📂.
+3. Stage your changes: `git add` 📋.
+4. Commit your changes: `git commit` ✅.
+5. Push your changes: `git push https HEAD:<branch>` 🚀.
+
+Use the HTTPS remote of your GitHub repository, as SSH authentication isn't possible through the web-based editor 🔐. 
+
+If you have two-factor authentication on GitHub, use a personal access token as your password 🔑.
+
+#### Working with Consoles
+
+The editor also provides Python and Odoo Shell consoles 🐍. Python consoles offer rich display capabilities, allowing you to visualize objects in HTML 🌐. 
+
+![odoo.sh console Capture](docs/images/odoosh-chap7-console.png)
+
+For example, you can use pandas to display cells of a CSV file 📊.
+
+![odoo.sh pandas Capture](docs/images/odoosh-chap7-pandas.png)
+
+In the Odoo Shell console, you can interact with the Odoo registry and model methods of your database 🛠️. 
+
+![odoo.sh registry Capture](docs/images/odoosh-chap7-registry.png)
+
+Be cautious, as changes are automatically committed to the database ⚠️. You can invoke database models using `env` and display lists and dicts prettily with the `Pretty` class 🌟.
