@@ -34,7 +34,7 @@
 
         # estate property type
         'views/estate_property_type_views.xml',
-        'data/estate_property_type_demo.xml',
+        'data/estate_property_type_data.xml',
 
         # estate property tag
         'views/estate_property_tag_views.xml',
