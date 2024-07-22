@@ -17,7 +17,7 @@
     'website': "http://www.gofamille.org",
 
     'category': 'Sales/Real Estate',
-    'version': '0.3',
+    'version': '0.4',
 
     'depends': ['base'],
 
@@ -46,6 +46,7 @@
         # DEMO DATAS
         # estate property
         'demo/estate_property_demo.xml',
+        'demo/estate_property_offer_demo.xml',
     ],
 
     'installable': True,
