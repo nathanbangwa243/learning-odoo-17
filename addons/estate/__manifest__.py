@@ -17,7 +17,7 @@
     'website': "http://www.gofamille.org",
 
     'category': 'Sales/Real Estate',
-    'version': '0.1',
+    'version': '0.3',
 
     'depends': ['base'],
 
@@ -28,18 +28,24 @@
         'views/estate_property_actions.xml',
         'views/estate_menus.xml',
         'views/estate_property_views.xml',
-        'demo/estate_property_demo.xml',
 
         # estate property offer
         'views/estate_property_offer_views.xml',
 
         # estate property type
         'views/estate_property_type_views.xml',
-        'data/estate_property_type_data.xml',
 
         # estate property tag
         'views/estate_property_tag_views.xml',
         'views/res_users.xml',
+
+        # MASTER DATAS
+        # estate property type
+        'data/estate_property_type_data.xml',
+
+        # DEMO DATAS
+        # estate property
+        'demo/estate_property_demo.xml',
     ],
 
     'installable': True,

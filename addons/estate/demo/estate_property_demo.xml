@@ -14,6 +14,7 @@
             <field name="garden">True</field>
             <field name="garden_area">100000</field>
             <field name="garden_orientation">South</field>
+            <field name="property_type_id" ref="estate.estate_property_type_id1"/>
         </record>
         <record id="estate_property_id2" model="estate.property">
             <field name="name">Trailer home</field>
@@ -27,6 +28,7 @@
             <field name="living_area">10</field>
             <field name="facades">4</field>
             <field name="garage">False</field>
+            <field name="property_type_id" ref="estate.estate_property_type_id1"/>
         </record>
     </data>
 
