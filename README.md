@@ -1920,3 +1920,125 @@ To use an external library like Unidecode:
 With these steps, you've created your first Odoo module, tested it, and deployed it in production. 
 
 Congratulations! 🎉
+
+## Expand your knowledge on the server framework
+
+### Chapter 9: Define Module Data 📊
+
+After creating your first module with Odoo.sh, it's time to dive deeper into managing the data that powers your module. This chapter will guide you through the types of data you can define and how to structure and declare them effectively within your Odoo module.
+
+#### Data Types 📑
+
+In Odoo, data is categorized into two main types: **Master Data** and **Demo Data**.
+
+**Master Data** is essential for the module to function correctly. It includes technical data like views and actions and business data such as countries, currencies, and legal reports. This data is automatically installed with the module.
+
+**Demo Data** is used for demonstration and testing purposes. It helps sales representatives perform demos, allows developers to test new features, and ensures that data loads correctly without errors. Demo data is loaded automatically unless you specify otherwise.
+
+#### Data Declaration 📝
+
+To declare data in your module, you need to include it in the module's manifest file. Data can be declared in CSV or XML format, with each file listed under the appropriate key in the manifest.
+
+**Manifest Example:**
+
+```python
+{
+    "name": "Real Estate",
+    "depends": ["base"],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/estate_property_offer_views.xml",
+        "data/master_data.xml",
+    ],
+    "demo": [
+        "demo/demo_data.xml",
+    ],
+    "application": True,
+}
+```
+
+#### CSV Data 📄
+
+CSV files are ideal for simple, long lists of data. They are easy to create and maintain but are limited in functionality compared to XML.
+
+**CSV Example:**
+
+```plaintext
+id,field_a,field_b,related_id:id
+id1,valueA1,valueB1,module.relatedid
+id2,valueA2,valueB2,module.relatedid
+```
+
+#### XML Data 🗂️
+
+XML is more flexible and powerful, suitable for complex data structures. It allows you to create detailed records and link related data.
+
+**XML Example:**
+
+```xml
+<odoo>
+  <record id="id1" model="tutorial.example">
+    <field name="field_a">valueA1</field>
+    <field name="field_b">valueB1</field>
+  </record>
+
+  <record id="id2" model="tutorial.example">
+    <field name="field_a">valueA2</field>
+    <field name="field_b">valueB2</field>
+  </record>
+</odoo>
+```
+
+#### Extending Data 🛠️
+
+In Odoo, you can extend existing data by adding new fields or enhancing current ones without replacing the original data. Use the `xml_id` of existing records to integrate new information seamlessly.
+
+**Extending Example:**
+
+```xml
+<odoo>
+  <record id="id1" model="tutorial.example">
+    <field name="field_c">valueC1</field>
+  </record>
+</odoo>
+```
+
+#### Accessing Data 🔍
+
+Accessing data in Odoo can be done through Python code, XML references, or CSV declarations. Always code defensively, considering that data can be altered or deleted by users.
+
+**Accessing Data Example in XML:**
+
+```xml
+<odoo>
+  <record id="id1" model="tutorial.example">
+    <field name="related_id" ref="module.relatedid"/>
+  </record>
+</odoo>
+```
+
+**Accessing Data Example in CSV:**
+
+```plaintext
+id,parent_id:id,name
+"child1","module.parent","Name1"
+"child2","module.parent","Name2"
+```
+
+#### Advanced Techniques 💡
+
+Understanding XML ids, the `noupdate` flag, and the use of raw SQL for data import are advanced techniques that can enhance your data management skills. However, these should be used cautiously to maintain data integrity and security.
+
+**No Update Example:**
+
+The records created with the noupdate flag won’t be updated when upgrading the module that created them, but it will be created if it didn’t exist yet.
+
+```xml
+<odoo noupdate="1">
+  <record id="id1" model="model">
+    <field name="fieldA" eval="True"/>
+  </record>
+</odoo>
+```
+
+By mastering these data management techniques, you'll ensure your Odoo modules are robust, flexible, and reliable, paving the way for more advanced development in the Odoo ecosystem. 🚀
