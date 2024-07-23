@@ -17,7 +17,7 @@
     'website': "http://www.gofamille.org",
 
     'category': 'Sales/Real Estate',
-    'version': '0.6',
+    'version': '0.7',
 
     'depends': ['base'],
 

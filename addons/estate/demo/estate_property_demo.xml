@@ -30,6 +30,35 @@
             <field name="garage">False</field>
             <field name="property_type_id" ref="estate.estate_property_type_id1"/>
         </record>
+        <record id="estate_property_id3" model="estate.property">
+            <field name="name">Bangwa home</field>
+            <field name="state">offer_received</field>
+            <field name="description">Home in a trailer park</field>
+            <field name="postcode">54321</field>
+            <field name="date_availability">1970-01-01</field>
+            <field name="expected_price">100000.0</field>
+            <field name="selling_price">120000.0</field>
+            <field name="bedrooms">1</field>
+            <field name="living_area">10</field>
+            <field name="facades">4</field>
+            <field name="garage">False</field>
+            <field name="property_type_id" ref="estate.estate_property_type_id2"/>
+            <!--            base.res_partner3 is GEMINI -->
+            <field name="offer_ids" eval="[
+                Command.create({
+                    'price': 10000.0,
+                    'partner_id': ref('base.res_partner_2')
+                }),
+                Command.create({
+                    'price': 15000.0,
+                    'partner_id': ref('base.res_partner_3')
+                }),
+                Command.create({
+                    'price': 20000.0,
+                    'partner_id': ref('base.res_partner_4')
+                }),
+            ]"/>
+        </record>
     </data>
 
 </odoo>
