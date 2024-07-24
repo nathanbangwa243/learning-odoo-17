@@ -23,6 +23,7 @@
 
     'data': [
         'security/ir.model.access.csv',
+        'security/security.xml',
 
         # estate property
         'views/estate_property_actions.xml',
