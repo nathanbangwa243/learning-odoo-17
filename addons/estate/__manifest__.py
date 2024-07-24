@@ -14,10 +14,10 @@
     """,
 
     'author': "@NathanBangwa243",
-    'website': "http://www.gofamille.org",
+    'website': "http://githun.com/gofamille",
 
     'category': 'Real Estate/Brokerage',
-    'version': '0.8',
+    'version': '0.9',
 
     'depends': ['base'],
 

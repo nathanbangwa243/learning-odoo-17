@@ -1,5 +1,6 @@
 <odoo>
     <data>
+        <!-- Groups Definition -->
         <record id="estate_group_user" model="res.groups">
             <field name="name">Agent</field>
             <field name="category_id" ref="base.module_category_real_estate_brokerage"/>
@@ -11,5 +12,40 @@
             <field name="implied_ids" eval="[(4, ref('estate_group_user'))]"/>
         </record>
 
+        <!-- Access Rule for Managers -->
+        <record id="estate_property_rule_manager" model="ir.rule">
+            <field name="name">Property access rule for managers</field>
+            <field name="model_id" ref="model_estate_property"/>
+            <field name="groups" eval="[(4, ref('estate_group_manager'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+
+        <!-- Access Rule for Salespersons -->
+        <record id="estate_property_rule_salesperson" model="ir.rule">
+            <field name="name">Property access rule for salespersons</field>
+            <field name="model_id" ref="model_estate_property"/>
+            <field name="groups" eval="[(4, ref('estate_group_user'))]"/>
+            <field name="domain_force">
+                [
+                '|',
+                ('salesperson_id', '=', user.id),
+                ('salesperson_id', '=', False)
+                ]
+            </field>
+        </record>
+
+        <!-- Access Rule for Users -->
+        <record id="estate_property_rule_user" model="ir.rule">
+            <field name="name">Property access rule for salespersons</field>
+            <field name="model_id" ref="model_estate_property"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">
+                [
+                '|',
+                ('salesperson_id', '=', user.id),
+                ('salesperson_id', '=', False)
+                ]
+            </field>
+        </record>
     </data>
 </odoo>
