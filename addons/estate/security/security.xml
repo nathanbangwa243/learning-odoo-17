@@ -20,32 +20,23 @@
             <field name="domain_force">[(1, '=', 1)]</field>
         </record>
 
-        <!-- Access Rule for Salespersons -->
-        <record id="estate_property_rule_salesperson" model="ir.rule">
-            <field name="name">Property access rule for salespersons</field>
-            <field name="model_id" ref="model_estate_property"/>
-            <field name="groups" eval="[(4, ref('estate_group_user'))]"/>
-            <field name="domain_force">
-                [
-                '|',
-                ('salesperson_id', '=', user.id),
-                ('salesperson_id', '=', False)
-                ]
-            </field>
-        </record>
+        <odoo>
+            <data>
+                <!-- Combined Access Rule for Salespersons and Users -->
+                <record id="estate_property_rule_combined" model="ir.rule">
+                    <field name="name">Property access rule for salespersons and users</field>
+                    <field name="model_id" ref="model_estate_property"/>
+                    <field name="groups" eval="[(4, ref('estate_group_user')), (4, ref('base.group_user'))]"/>
+                    <field name="domain_force">
+                        [
+                        '|',
+                        ('salesperson_id', '=', user.id),
+                        ('salesperson_id', '=', False)
+                        ]
+                    </field>
+                </record>
+            </data>
+        </odoo>
 
-        <!-- Access Rule for Users -->
-        <record id="estate_property_rule_user" model="ir.rule">
-            <field name="name">Property access rule for salespersons</field>
-            <field name="model_id" ref="model_estate_property"/>
-            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
-            <field name="domain_force">
-                [
-                '|',
-                ('salesperson_id', '=', user.id),
-                ('salesperson_id', '=', False)
-                ]
-            </field>
-        </record>
     </data>
 </odoo>

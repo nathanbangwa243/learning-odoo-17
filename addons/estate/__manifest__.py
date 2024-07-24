@@ -17,7 +17,7 @@
     'website': "http://githun.com/gofamille",
 
     'category': 'Real Estate/Brokerage',
-    'version': '0.9',
+    'version': '1.0',
 
     'depends': ['base'],
 
