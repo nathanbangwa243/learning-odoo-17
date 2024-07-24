@@ -1,0 +1,51 @@
+<odoo>
+    <data>
+        <!-- Groups Definition -->
+        <record id="estate_group_user" model="res.groups">
+            <field name="name">Agent</field>
+            <field name="category_id" ref="base.module_category_real_estate_brokerage"/>
+        </record>
+
+        <record id="estate_group_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="base.module_category_real_estate_brokerage"/>
+            <field name="implied_ids" eval="[(4, ref('estate_group_user'))]"/>
+        </record>
+
+        <!-- Access Rule for Managers -->
+        <record id="estate_property_rule_manager" model="ir.rule">
+            <field name="name">Property access rule for managers</field>
+            <field name="model_id" ref="model_estate_property"/>
+            <field name="groups" eval="[(4, ref('estate_group_manager'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+
+
+        <!-- Combined Access Rule for Salespersons and Users -->
+        <record id="estate_property_rule_combined" model="ir.rule">
+            <field name="name">Property access rule for salespersons and users</field>
+            <field name="model_id" ref="model_estate_property"/>
+            <field name="groups" eval="[(4, ref('estate_group_user')), (4, ref('base.group_user'))]"/>
+            <field name="domain_force">
+                [
+                '&amp;',
+                '|',
+                ('salesperson_id', '=', user.id),
+                ('salesperson_id', '=', False),
+                ('company_id', '=', user.company_id.id)
+                ]
+            </field>
+
+        </record>
+
+        <!--        &lt;!&ndash; Restrict agents to see properties of their own company only &ndash;&gt;-->
+        <!--        <record id="estate_property_rule_company" model="ir.rule">-->
+        <!--            <field name="name">Property access rule for agents (by company)</field>-->
+        <!--            <field name="model_id" ref="model_estate_property"/>-->
+        <!--            <field name="groups" eval="[(4, ref('estate_group_user'))]"/>-->
+        <!--            <field name="domain_force">[('company_id', '=', user.company_id.id)]</field>-->
+
+        <!--        </record>-->
+
+    </data>
+</odoo>

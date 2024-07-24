@@ -14,14 +14,15 @@
     """,
 
     'author': "@NathanBangwa243",
-    'website': "http://www.gofamille.org",
+    'website': "http://githun.com/gofamille",
 
-    'category': 'Sales/Real Estate',
-    'version': '0.7',
+    'category': 'Real Estate/Brokerage',
+    'version': '1.4',
 
     'depends': ['base'],
 
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
 
         # estate property
