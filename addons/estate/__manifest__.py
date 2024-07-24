@@ -17,13 +17,13 @@
     'website': "http://www.gofamille.org",
 
     'category': 'Real Estate/Brokerage',
-    'version': '0.7',
+    'version': '0.8',
 
     'depends': ['base'],
 
     'data': [
-        'security/ir.model.access.csv',
         'security/security.xml',
+        'security/ir.model.access.csv',
 
         # estate property
         'views/estate_property_actions.xml',
