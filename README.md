@@ -2046,3 +2046,149 @@ The records created with the noupdate flag won’t be updated when upgrading the
 ```
 
 By mastering these data management techniques, you'll ensure your Odoo modules are robust, flexible, and reliable, paving the way for more advanced development in the Odoo ecosystem. 🚀
+
+
+---
+
+### Chapter 2: Restrict Access to Data 🔐
+
+Building on the foundation of module data, this chapter delves into securing your module by restricting access to data. 
+
+Ensuring that only authorized users can view or manipulate certain data is critical for maintaining business `integrity` and `confidentiality`.
+
+#### Introduction to Security Concerns 🛡️
+
+In most business environments, security is a key concern. 
+
+**Without proper restrictions:**
+
+- Any employee can create, read, update, or delete properties, property types, or property tags.
+- Unauthorized third parties might access sensitive property data.
+- Non-agents could view or modify property details.
+- Agents might inadvertently alter property types or tags that they shouldn’t.
+- Exclusive properties could be managed by unauthorized agents.
+- Agents could confirm sales without proper invoicing permissions.
+
+To address these issues, you need to implement security measures that limit access based on user roles and responsibilities.
+
+#### Using Groups to Manage Access 👥
+
+Odoo uses `groups` to manage `access rights` and roles. Groups link security rules to users, simplifying the process of assigning and managing permissions.
+
+**Example Groups:**
+
+- **Real Estate Managers**: Can configure the system, manage all property types and tags, and oversee all properties.
+- **Real Estate Agents**: Can manage properties under their care and confirm sales but cannot modify property types or tags.
+
+Groups are defined in the module’s `data` files and are crucial for maintaining structured access control.
+
+#### Exercise: Creating Security Groups 🏗️
+
+1. **Create the `security.xml` file** in the appropriate folder.
+2. **Add to `__manifest__.py`**: Include the `security.xml` file and set the category field to `Real Estate/Brokerage`.
+3. **Define Groups**:
+    ```xml
+    <odoo>
+      <record id="estate_group_user" model="res.groups">
+        <field name="name">Agent</field>
+        <field name="category_id" ref="base.module_category_real_estate_brokerage"/>
+      </record>
+      <record id="estate_group_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="base.module_category_real_estate_brokerage"/>
+        <field name="implied_ids" eval="[(4, ref('estate_group_user'))]"/>
+      </record>
+    </odoo>
+    ```
+
+4. **Restart Odoo and update the module** to apply changes.
+5. **Assign the Real Estate Manager role** to the admin user and create a new user with the Real Estate Agent role via the web interface.
+
+#### Access Rights Configuration 🛂
+
+Access rights allow you to control what users can do with specific models.
+
+**Example Access Rights Configuration**:
+
+- **Real Estate Managers**: Full access to all objects.
+- **Real Estate Agents**: Read-only access to property types and tags, no delete rights for properties.
+
+Update your access rights file to reflect these rules and verify by testing with different user roles.
+
+#### Implementing Record Rules 📜
+
+Record rules offer `granular` control over access to individual records.
+
+**Example Record Rule**:
+```xml
+<record id="rule_id" model="ir.rule">
+  <field name="name">Agent Rule</field>
+  <field name="model_id" ref="estate.property"/>
+  <field name="perm_read" eval="True"/>
+  <field name="perm_write" eval="True"/>
+  <field name="perm_create" eval="True"/>
+  <field name="perm_unlink" eval="False"/>
+  <field name="groups" eval="[(4, ref('estate_group_user'))]"/>
+  <field name="domain_force">[
+    '|', ('user_id', '=', user.id),
+         ('user_id', '=', False)
+  ]</field>
+</record>
+```
+This rule ensures that agents can only see or modify properties they manage.
+
+#### Security Override and Explicit Checks 🚨
+
+In some cases, you may need to `bypass` security checks for specific operations. Use `sudo()` to temporarily ignore access rights and record rules.
+
+**Example**:
+```python
+property.sudo().write({'state': 'sold'})
+```
+
+Always implement explicit security checks to validate user permissions before bypassing security mechanisms. Use methods like `check_access_rights` and `check_access_rule` to ensure the current user has appropriate permissions.
+
+#### Multi-Company Security 🌐
+
+For businesses operating across multiple companies, enforce multi-company rules to restrict access based on the user's company.
+
+```python
+    def action_sold_property(self):
+        # Call the super method to perform the default action_sold_property logic
+        result = super().action_sold_property()
+
+        # Ensure the current user has access rights to update properties
+        self.check_access_rights('write')
+        self.check_access_rule('write')
+
+        ...
+
+        self.env['account.move'].sudo().create(move_values)
+
+        return result
+```
+**Example Multi-Company Rule**:
+```xml
+<record model="ir.rule" id="multi_company_rule">
+  <field name="name">Multi-Company Rule</field>
+  <field name="model_id" ref="estate.property"/>
+  <field name="domain_force">[
+    '|', ('company_id', '=', False),
+         ('company_id', 'in', company_ids)
+  ]</field>
+</record>
+```
+Ensure each property has a `company_id` and restrict agents to viewing only properties of their assigned company.
+
+#### Visibility vs. Security 🔍🔒
+
+Differentiate between visibility and security:
+
+- **Visibility**: Controls what is shown in the user interface but doesn’t restrict access.
+- **Security**: Restricts access to data and operations, ensuring unauthorized users cannot interact with them.
+
+**Example**:
+- **Visibility**: Hide the Settings menu for agents.
+- **Security**: Prevent agents from accessing the Property Types and Property Tags menus.
+
+By following these guidelines, you'll create a secure, well-structured Odoo module, ensuring that users have access to only the data and functions necessary for their roles.
