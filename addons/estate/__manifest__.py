@@ -16,7 +16,7 @@
     'author': "@NathanBangwa243",
     'website': "http://www.gofamille.org",
 
-    'category': 'Sales/Real Estate',
+    'category': 'Real Estate/Brokerage',
     'version': '0.7',
 
     'depends': ['base'],
