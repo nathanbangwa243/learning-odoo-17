@@ -1921,7 +1921,11 @@ With these steps, you've created your first Odoo module, tested it, and deployed
 
 Congratulations! 🎉
 
+---
+
 ## Expand your knowledge on the server framework
+
+---
 
 ### Chapter 9: Define Module Data 📊
 
