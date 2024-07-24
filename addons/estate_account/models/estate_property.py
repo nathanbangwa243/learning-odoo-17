@@ -6,9 +6,10 @@ from datetime import date
 from odoo import fields, models
 from odoo import api
 from odoo import exceptions
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, AccessError
 
 from odoo import Command
+
 
 class EstateProperty(models.Model):
     _inherit = "estate.property"
@@ -19,6 +20,10 @@ class EstateProperty(models.Model):
         """
         # Call the super method to perform the default action_sold_property logic
         result = super().action_sold_property()
+
+        # Ensure the current user has access rights to update properties
+        self.check_access_rights('write')
+        self.check_access_rule('write')
 
         # Retrieve the partner_id from the current estate.property
         partner_id = self.buyer_id or False
@@ -55,6 +60,9 @@ class EstateProperty(models.Model):
 
             ],
         }
+
+        print(" reached ".center(100, '='))
+
         self.env['account.move'].sudo().create(move_values)
 
         return result
