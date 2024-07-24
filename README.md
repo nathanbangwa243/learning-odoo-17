@@ -1927,7 +1927,7 @@ Congratulations! 🎉
 
 ---
 
-### Chapter 9: Define Module Data 📊
+### Chapter 1: Define Module Data 📊
 
 After creating your first module with Odoo.sh, it's time to dive deeper into managing the data that powers your module. This chapter will guide you through the types of data you can define and how to structure and declare them effectively within your Odoo module.
 
