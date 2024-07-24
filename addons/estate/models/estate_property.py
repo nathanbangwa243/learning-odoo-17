@@ -10,9 +10,9 @@ from odoo.exceptions import ValidationError
 from odoo.exceptions import UserError
 from odoo.tools.float_utils import float_compare, float_is_zero
 
-
 # local debug
 from . import debug
+
 
 class EstateProperty(models.Model):
     _name = 'estate.property'
@@ -25,7 +25,9 @@ class EstateProperty(models.Model):
 
     postcode = fields.Text(string="Postcode", help="Property Post code")
 
-    date_availability = fields.Date(string="Available From", default=lambda self: (datetime.now() + timedelta(days=90)).strftime('%Y-%m-%d'), copy=False, help="Property Date Availability")
+    date_availability = fields.Date(string="Available From",
+                                    default=lambda self: (datetime.now() + timedelta(days=90)).strftime('%Y-%m-%d'),
+                                    copy=False, help="Property Date Availability")
 
     expected_price = fields.Float(string="Expected Price", required=True, help="Property Expected Price")
 
@@ -47,20 +49,22 @@ class EstateProperty(models.Model):
         string="Orientation",
         selection=[("North", "North"), ("South", "South"), ("East", "East"), ("West", "West")],
         help="Orientation help to define the garden orientation")
-    
+
     active = fields.Boolean(string="Active", default=True, help="Property is available")
 
     state = fields.Selection(
         string="State",
-        selection=[("new", "New"), ("offer_received", "Offer Received"), ("offer_accepted", "Offer Accepted"), ("sold", "Sold"), ("canceled", "Canceled")],
+        selection=[("new", "New"), ("offer_received", "Offer Received"), ("offer_accepted", "Offer Accepted"),
+                   ("sold", "Sold"), ("canceled", "Canceled")],
         default="new",
         help="State of the property advertisement")
-    
+
     # links
     property_type_id = fields.Many2one('estate.property.type', domain="[('id', '!=', False)]", string="Type")
     tag_ids = fields.Many2many('estate.property.tag', string="Tag")
 
-    salesperson_id = fields.Many2one('res.users', string='Salesman', default=lambda self: self.env.user, help="Salesperson")
+    salesperson_id = fields.Many2one('res.users', string='Salesman', default=lambda self: self.env.user,
+                                     help="Salesperson")
     buyer_id = fields.Many2one('res.partner', string="Buyer", copy=False, help="Buyer Person")
 
     offer_ids = fields.One2many('estate.property.offer', 'property_id', string='Offers', help='List of offers')
@@ -69,6 +73,10 @@ class EstateProperty(models.Model):
     total_area = fields.Integer(string="Total Area (sqm)", compute='_compute_total_area')
 
     best_price = fields.Float(string="Best Offer", compute='_compute_best_offer')
+
+    # Add company_id field
+    company_id = fields.Many2one('res.company', string="Company", required=True, default=lambda self: self.env.company,
+                                 help="Company related to this property")
 
     # constraints
 
@@ -97,7 +105,7 @@ class EstateProperty(models.Model):
                 record.best_price = max(record.offer_ids.mapped('price'))
             except ValueError:
                 record.best_price = None
-    
+
     @api.onchange('garden')
     def _onchange_garden(self):
         if self.garden:
@@ -111,7 +119,7 @@ class EstateProperty(models.Model):
             return {'warning': {
                 'title': "Non-blocking Warning",
                 'message': 'Relax, is just a fun test for non-blocking message'}}
-        
+
     def action_sold_property(self):
         for record in self:
             if record.state == 'canceled':
@@ -119,9 +127,9 @@ class EstateProperty(models.Model):
                 raise exceptions.UserError("canceled property cannot be sold")
             else:
                 record.state = 'sold'
-        
+
         return True
-    
+
     def action_cancel_property(self):
         for record in self:
             if record.state == 'sold':
@@ -130,7 +138,7 @@ class EstateProperty(models.Model):
 
             else:
                 record.state = 'canceled'
-            
+
         return True
 
     @api.constrains('selling_price', 'expected_price')
@@ -138,11 +146,12 @@ class EstateProperty(models.Model):
         for property_record in self:
             # to avoid initialization error
             if not float_is_zero(property_record.selling_price, precision_digits=1):
-                if float_compare(property_record.selling_price, 0.9 * property_record.expected_price, precision_digits=2) == -1:
+                if float_compare(property_record.selling_price, 0.9 * property_record.expected_price,
+                                 precision_digits=2) == -1:
                     raise ValidationError("Selling price cannot be lower than 90% of the expected price!")
                 else:
                     pass
-                
+
             else:
                 pass
 
@@ -153,4 +162,3 @@ class EstateProperty(models.Model):
                 raise UserError("Only New or Canceled property can be deleted!")
             else:
                 pass
-
