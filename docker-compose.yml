@@ -56,7 +56,7 @@ services:
     
     # Ports exposés
     ports:
-      - "5432:5432"
+      - "5433:5432"
     
     # Redémarrage automatique
     restart: always
