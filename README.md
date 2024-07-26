@@ -2192,3 +2192,120 @@ Differentiate between visibility and security:
 - **Security**: Prevent agents from accessing the Property Types and Property Tags menus.
 
 By following these guidelines, you'll create a secure, well-structured Odoo module, ensuring that users have access to only the data and functions necessary for their roles.
+
+---
+
+### Chapter 3: Safeguard Your Code with Unit Tests 🧪
+
+Building upon the security measures from the previous chapter, we now delve into the realm of unit testing. Just as security ensures data integrity and confidentiality, unit tests ensure the `stability` and `reliability` of your code.
+
+#### Why Write Tests? 📝
+
+Imagine you're constructing a skyscraper. Each floor must be sturdy before you build the next one. Similarly, unit tests are the `foundation blocks` of your code, ensuring each part functions correctly before adding new features.
+
+**Benefits of Writing Tests:**
+
+- **Future-proofing:** Ensures that changes or new features don't break existing functionality.
+- **Scope definition:** Clearly defines what your code is supposed to do.
+- **Use case documentation:** Provides practical examples of how your code should be used.
+- **Technical documentation:** Offers insights into how the code operates.
+- **Goal-setting:** Helps in defining the objectives before starting the development.
+
+#### Running Tests: The Essentials 🏃
+
+Before writing tests, it's crucial to know how to execute them. Picture yourself at the command line, the control center of your coding environment.
+
+To see the available options, use:
+```bash
+odoo-bin -h
+```
+
+Key options for testing include:
+
+- `--test-enable`: Activates unit tests.
+- `--test-file=TEST_FILE`: Runs a specific test file.
+- `--test-tags=TEST_TAGS`: Filters tests based on tags.
+
+To run all tests for the `account` module:
+```bash
+odoo-bin -i account --test-enable
+```
+
+Or, to run a specific test file:
+```bash
+odoo-bin --test-file=addons/account/tests/test_account_move_entry.py
+```
+
+#### Continuous Integration (CI): Your Automated Ally 🤖
+
+In Odoo, `CI` ensures that your code remains `stable` and bug-free. Each time you `push` a commit to GitHub, tools like `Runbot` come into play, automatically running tests to verify the code.
+
+**Runbot Insights:**
+
+- **Commit status:** Monitors the state of each commit.
+- **Batches and builds:** A batch includes multiple builds, and a build checks the community and enterprise versions.
+- **Green signal:** A build passes if all tests are successful.
+
+By integrating CI into your workflow, you can catch issues early, ensuring smooth and stable code deployment.
+
+#### Writing Tests: The First Line of Defense 🛡️
+
+Writing tests is like training a guard dog. They should be `independent` and leave `no traces` once done. For instance, if you're fixing a bug, your test should `fail` before the fix and `pass` afterward.
+
+**Test Structure:**
+
+Organize tests within your module, similar to how you'd structure the rooms in a house:
+```
+estate
+├── models
+│   ├── *.py
+│   └── __init__.py
+├── tests
+│   ├── test_*.py
+│   └── __init__.py
+├── __init__.py
+└── __manifest__.py
+```
+
+Each test file should start with `test_` and be imported in the `__init__.py` of the tests folder. Tests extend `odoo.tests.common.TransactionCase`, and you usually define a `setUpClass` method to create test data.
+
+**Example Test Case:**
+```python
+from odoo.tests.common import TransactionCase
+from odoo.exceptions import UserError
+from odoo.tests import tagged
+
+@tagged('post_install', '-at_install')
+class EstateTestCase(TransactionCase):
+
+    @classmethod
+    def setUpClass(cls):
+        super(EstateTestCase, cls).setUpClass()
+        cls.properties = cls.env['estate.property'].create([...])
+
+    def test_creation_area(self):
+        self.properties.living_area = 20
+        self.assertRecordValues(self.properties, [
+           {'name': ..., 'total_area': ...},
+        ])
+
+    def test_action_sell(self):
+        self.properties.action_sold()
+        self.assertRecordValues(self.properties, [
+           {'name': ..., 'state': ...},
+        ])
+```
+
+#### Ensuring Stability Through Tests 🔍
+
+Create tests to prevent scenarios where:
+- An offer is created for a sold property.
+- A property is sold without accepted offers.
+
+These tests act as gatekeepers, ensuring only valid operations are performed. 
+
+#### Continuous Improvement and Integration 🤝
+
+With experience, tools like `Robodoo` and `Mergebot` become valuable allies. They help manage code changes, ensuring smooth merges and maintaining code quality.
+
+By writing and running tests, you ensure your code stands strong, just like a well-built skyscraper. With these practices, you can confidently expand your Odoo module, knowing that each addition is safeguarded by your tests.
