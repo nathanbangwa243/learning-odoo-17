@@ -1,6 +1,9 @@
 #!/bin/bash
 
 # delete odoo docker instance
+echo "**********[STOP ODOO DOCKER INSTANCES]*********"
+docker stop odoo17Learning postgres_odoo17Learning
+
 echo "**********[DELETE ODOO DOCKER INSTANCES]*********"
 docker rm -f postgres_local
 
