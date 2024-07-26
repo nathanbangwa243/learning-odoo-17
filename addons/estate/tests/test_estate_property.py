@@ -1,5 +1,5 @@
 from odoo.exceptions import UserError
-from odoo.tests import tagged
+from odoo.tests import tagged, Form
 from odoo.tests.common import TransactionCase
 
 
@@ -58,14 +58,27 @@ class EstateTestCase(TransactionCase):
         with self.assertRaises(UserError):
             self.properties[1].action_sold_property()
 
-    def test_garden_uncheck_resets_fields(self):
-        property_1 = self.properties[0]
-        property_1.garden = True
-        property_1._onchange_garden()
-        self.assertEqual(property_1.garden_area, 10)
-        self.assertEqual(property_1.garden_orientation, 'North')
+        # def test_garden_uncheck_resets_fields(self):
+        #     property_1 = self.properties[0]
+        #     property_1.garden = True
+        #     property_1._onchange_garden()
+        #     self.assertEqual(property_1.garden_area, 10)
+        #     self.assertEqual(property_1.garden_orientation, 'North')
+        #
+        #     property_1.garden = False
+        #     property_1._onchange_garden()
+        #     self.assertEqual(property_1.garden_area, 0)
+        #     self.assertEqual(property_1.garden_orientation, '')
 
-        property_1.garden = False
-        property_1._onchange_garden()
-        self.assertEqual(property_1.garden_area, 0)
-        self.assertEqual(property_1.garden_orientation, '')
+        def test_garden_uncheck_resets_fields(self):
+            property_1 = self.properties[0]
+
+            with Form(property_1) as property_form:
+                property_form.garden = True
+            self.assertEqual(property_1.garden_area, 10)
+            self.assertEqual(property_1.garden_orientation, 'North')
+
+            with Form(property_1) as property_form:
+                property_form.garden = False
+            self.assertEqual(property_1.garden_area, 0)
+            self.assertEqual(property_1.garden_orientation, '')
