@@ -46,15 +46,15 @@
             <!--            base.res_partner3 is GEMINI -->
             <field name="offer_ids" eval="[
                 Command.create({
-                    'price': 10000.0,
+                    'price': 170000.0,
                     'partner_id': ref('base.res_partner_2')
                 }),
                 Command.create({
-                    'price': 15000.0,
+                    'price': 180000.0,
                     'partner_id': ref('base.res_partner_3')
                 }),
                 Command.create({
-                    'price': 20000.0,
+                    'price': 190000.0,
                     'partner_id': ref('base.res_partner_4')
                 }),
             ]"/>
