@@ -1,0 +1,28 @@
+import json
+
+from odoo import http
+from odoo.http import request, Response
+
+
+class EstatePropertyController(http.Controller):
+
+    @http.route('/estate/properties', type='http', auth='user', methods=['GET'], csrf=False)
+    def get_properties(self):
+        properties = request.env['estate.property'].search([])
+        property_list = []
+        for property in properties:
+            property_list.append({
+                'name': property.name,
+                'living_area': property.living_area,
+                'total_area': property.total_area,
+                'status': property.status,
+                # add other fields as necessary
+            })
+        return Response(json.dumps({'properties': property_list}), content_type='application/json', status=200)
+
+    @http.route('/estate/properties/demo', type='http', auth='public', methods=['GET'], csrf=False)
+    def get_properties_demo(self):
+        property_list = [{'name': 'Property {}'.format(property_id), 'living_area': property_id * 10,
+                          'status': 'sold' if property_id % 2 == 0 else 'new'} for property_id in range(3)]
+
+        return Response(json.dumps({'properties': property_list}), content_type='application/json', status=200)
