@@ -15,7 +15,7 @@ class EstatePropertyController(http.Controller):
                 'name': property.name,
                 'living_area': property.living_area,
                 'total_area': property.total_area,
-                'status': property.status,
+                'state': property.state,
                 # add other fields as necessary
             })
         return Response(json.dumps({'properties': property_list}), content_type='application/json', status=200)
@@ -23,6 +23,6 @@ class EstatePropertyController(http.Controller):
     @http.route('/estate/properties/demo', type='http', auth='public', methods=['GET'], csrf=False)
     def get_properties_demo(self):
         property_list = [{'name': 'Property {}'.format(property_id), 'living_area': property_id * 10,
-                          'status': 'sold' if property_id % 2 == 0 else 'new'} for property_id in range(3)]
+                          'state': 'sold' if property_id % 2 == 0 else 'new'} for property_id in range(3)]
 
         return Response(json.dumps({'properties': property_list}), content_type='application/json', status=200)
