@@ -26,3 +26,10 @@ class EstatePropertyController(http.Controller):
                           'state': 'sold' if property_id % 2 == 0 else 'new'} for property_id in range(3)]
 
         return Response(json.dumps({'properties': property_list}), content_type='application/json', status=200)
+
+
+class RestrictEstateProperty(EstatePropertyController):
+
+    @http.route(auth='user')
+    def get_properties_demo(self):
+        return super().get_properties_demo()
