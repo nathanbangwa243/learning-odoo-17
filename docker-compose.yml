@@ -20,7 +20,7 @@ services:
     restart: always
     
     # Commande à exécuter pour démarrer Odoo
-    command: "-u all -d learning_db --dev xml --limit-time-real=100000"
+    command: "-i estate -u all -d learning_db --dev xml --limit-time-real=100000"
     
     # Montage des volumes pour persister les données
     volumes:
