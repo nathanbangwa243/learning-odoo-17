@@ -27,6 +27,13 @@ class EstatePropertyController(http.Controller):
 
         return Response(json.dumps({'properties': property_list}), content_type='application/json', status=200)
 
+    @http.route('/estate/properties/opendemo', type='http', auth='none', methods=['GET'], csrf=False)
+    def get_properties_open_demo(self):
+        property_list = [{'name': 'Property {}'.format(property_id), 'living_area': property_id * 10,
+                          'state': 'sold' if property_id % 2 == 0 else 'new'} for property_id in range(3)]
+
+        return Response(json.dumps({'properties': property_list}), content_type='application/json', status=200)
+
 
 class RestrictEstateProperty(EstatePropertyController):
 
