@@ -35,3 +35,5 @@ docker compose -f docker-compose-local.yml up -d --force-recreate
 # odoo-bin --test-file=addons/account/tests/test_account_move_entry.py
  # test tags can help you filter quite easily
 # odoo-bin --test-tags=/account:TestAccountMove.test_custom_currency_on_account_1
+
+# odoo17 -c config/odoo-local.conf --test-file=/home/nathanbangwa/Documents/learning/odoo/learning-odoo-17/addons/estate/tests/test_estate_property.py
