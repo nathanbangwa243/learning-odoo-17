@@ -2687,3 +2687,106 @@ Payment providers in Odoo 17 are designed to handle various aspects of the `paym
 By understanding and utilizing these methods and fields, developers can ensure their payment processes are secure, efficient, and tailored to meet specific business needs. 
 
 This mastery enables the creation of `robust payment` solutions within the Odoo ecosystem, enhancing the overall user experience. 🚀
+
+---
+
+### Chapter 3: Payment Token 🔒
+
+In our journey through Odoo 17, we now focus on `Payment Tokens`, a critical aspect of ensuring secure and seamless transactions. These tokens handle **sensitive** payment information, allowing for efficient and safe payment processes.
+
+#### Retrieving Available Tokens 🎟️
+
+The `_get_available_tokens` method is essential for finding tokens linked to specific providers and partners. To retrieve these tokens, a module must override this method, providing necessary context through `kwargs`.
+
+- **Providers IDs**: List of IDs for the transaction's available providers.
+- **Partner ID**: ID of the partner involved.
+- **Validation Flag**: Boolean indicating if the transaction is for validation.
+- **Additional Parameters**: Other keyword arguments for additional context.
+
+This method returns the available tokens, ensuring relevant tokens are considered for each transaction.
+
+#### Building Token Display Names 🏷️
+
+Creating user-friendly names for tokens is crucial for clear display on interfaces. The `_build_display_name` method constructs these names to be concise and informative.
+
+- **Arguments**: Passed by QWeb when calling the method.
+- **Max Length**: Default set to 34, fitting the largest IBANs.
+- **Padding**: Determines if the name includes padding characters.
+- **Additional Data**: Optional data for further customization.
+
+The method formats names like "•••• 1234", ensuring they fit within the specified length and adding padding as needed.
+
+#### Adding Provider-Specific Values ✏️
+
+When creating tokens, it's often necessary to include provider-specific details. The `_get_specific_create_values` method enhances token creation by adding these details.
+
+- **Provider Code**: Unique code of the token’s managing provider.
+- **Original Values**: Initial values for token creation.
+
+This method returns a dictionary that combines generic and provider-specific information, ensuring tokens are created with all required details.
+
+```python
+class MyPaymentProvider(odoo.addons.payment.models.payment_token.PaymentToken):
+
+    def _get_specific_create_values(self, provider_code, values):
+        # Ajouter des valeurs spécifiques au fournisseur
+        return { 
+           "token_id": "efgh5678", 
+           "paypal_api_key": "abc123"
+        }
+```
+#### Handling Token Archiving 📦
+
+Tokens may need to be archived over time. The `_handle_archiving` method manages this process. 
+
+Modules can override this method to perform additional operations during archiving, ensuring secure storage or disposal of tokens.
+
+```python
+class MyPaymentProvider(odoo.addons.payment.models.payment_token.PaymentToken):
+
+    def _handle_archiving(self):
+        # Supprimer des données liées au token
+        self.env['my_custom_data'].search([('token_id', '=', self.id)]).unlink()
+        # Envoyer une notification à l'utilisateur
+        # ...
+```
+
+#### Linking Tokens to Records 🔗
+
+Tokens often link to specific records like subscriptions or invoices. The `get_linked_records_info` method returns information about these linked records.
+
+- **Description**: Description of the record’s model (e.g., "Subscription").
+- **ID**: ID of the linked record.
+- **Name**: Name of the linked record.
+- **URL**: URL to access the record.
+
+Overriding this method allows modules to provide detailed information about documents linked to a token, aiding users in tracking and managing their transactions effectively.
+
+```python
+class PaymentToken(odoo.addons.payment.models.payment_token.PaymentToken):
+
+    def get_linked_records_info(self):
+        self.ensure_one()
+        linked_records = []
+        
+        # Supposons que nous ayons une relation entre le jeton de paiement et les factures
+        invoices = self.env['account.move'].search([('payment_token_id', '=', self.id)])
+        
+        for invoice in invoices:
+            record_info = {
+                "description": "Invoice",
+                "id": invoice.id,
+                "name": invoice.name,
+                "url": f"/web#id={invoice.id}&model=account.move&view_type=form"
+            }
+            linked_records.append(record_info)
+        
+        return linked_records
+```
+### Conclusion 🎯
+
+In Odoo 17, `Payment Tokens` are vital for secure and efficient transactions. 
+
+By understanding and using methods like `_get_available_tokens`, `_build_display_name`, and `_get_specific_create_values`, developers can ensure tokens are managed effectively. 
+
+This enhances the payment experience, contributing to a secure and reliable payment system within Odoo. 🚀
