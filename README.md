@@ -2629,7 +2629,7 @@ Several methods help manage validation operations:
 
 1. **Validation Amount**: `_get_validation_amount` returns the amount used for validation.
 ```python
-class PaymentProvider:
+class MyPaymentProvider(odoo.addons.payment.models.payment_provider.PaymentProvider):
     def get_validation_amount(self):
         return 5.0  # Montant utilisé pour la validation des paiements
 
@@ -2641,7 +2641,7 @@ validation_amount = provider.get_validation_amount()  # Cela retourne 5.0
 
 2. **Validation Currency**: `_get_validation_currency` returns the currency used for validation.
 ```python
-class PaymentProvider:
+class MyPaymentProvider(odoo.addons.payment.models.payment_provider.PaymentProvider):
     def _get_validation_currency(self, payment_method='JPY'):
         supported_currencies = ['EUR', 'USD']
         if payment_method in supported_currencies:
@@ -2659,7 +2659,7 @@ Providers can override these methods to specify their requirements for validatio
 The `_should_build_inline_form` method decides if an inline payment form should be created based on whether the operation is a validation. 
 
 ```python
-class PaymentProvider:
+class MyPaymentProvider(odoo.addons.payment.models.payment_provider.PaymentProvider):
     def _should_build_inline_form(self, is_validation=False):
         if is_validation:
             return False  # Pas de formulaire intégré pour les validations
@@ -2670,7 +2670,7 @@ class PaymentProvider:
 The `_get_removal_values` method returns values to update a provider when its module is uninstalled, ensuring a smooth removal process.
 
 ```python
-class AdvancedPaymentModule:
+class MyPaymentProvider(odoo.addons.payment.models.payment_provider.PaymentProvider):
     def _get_removal_values(self):
         # Valeurs spécifiques pour la désinstallation
         return {
