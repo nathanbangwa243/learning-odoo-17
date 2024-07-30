@@ -3355,3 +3355,159 @@ By understanding and using methods like `_get_available_tokens`, `_build_display
 and `_get_specific_create_values`, developers can ensure tokens are managed effectively.
 
 This enhances the payment experience, contributing to a secure and reliable payment system within Odoo. 🚀
+
+### Chapter 4: Payment Transaction ⚙️
+
+Continuing our journey through Odoo 17, we dive into the mechanics of `Payment Transactions`, a crucial aspect of handling financial operations. 
+
+These transactions form the backbone of `payment systems`, ensuring every financial action is recorded, processed, and tracked accurately.
+
+#### Creating Unique Transaction References 🔖
+
+In Odoo, each transaction needs a `unique identifier`, known as a `reference`. 
+
+The `_compute_reference` method generates these references by combining a prefix, a separator, and a sequence number. 
+
+If no custom prefix is provided, Odoo generates one using `_compute_reference_prefix`, which may include transaction details like invoice IDs. 
+
+```python
+class MyPaymentProvider(odoo.addons.payment.models.payment_transaction.PaymentTransaction):
+
+    def _compute_reference_prefix(self, provider_code, separator, values):
+        # Ensure we are in sudo mode to access all necessary documents
+        self = self.sudo()
+
+        invoice_number = self.env['account.move'].browse(values['invoice_ids'][0]).name
+        return f"INV-{invoice_number}"
+
+```
+This meticulous process guarantees that every transaction is uniquely identifiable, even if multiple transactions share similar details.
+
+#### Post-Processing Transactions 📊
+
+After a transaction, it’s essential to summarize and display its status clearly. The `_get_post_processing_values` method collects relevant data, such as the provider’s name, the transaction amount, and its current state (e.g., pending, done, or canceled). 
+
+```python
+{
+    'provider_code': 'PayPal',
+    'provider_name': 'PayPal',
+    'reference': 'PAY123456',
+    'amount': 100,
+    'currency_id': 1,  # Supposons que 1 corresponde à USD
+    'state': 'done',
+    'state_message': 'Payment completed successfully.',
+    'operation': 'payment',
+    'is_post_processed': True,
+    'landing_route': '/thank_you'
+}
+
+```
+
+Providers can `customize` this data, ensuring that users receive the most accurate and relevant information. This transparency helps in managing transactions effectively and addressing any issues that might arise.
+
+#### Tailoring Transaction Details ✏️
+
+Transactions often require specific details based on the provider’s requirements. The methods `_get_specific_create_values`, `_get_specific_processing_values`, and `_get_specific_rendering_values` allow for this customization. 
+
+These methods can be overridden to add provider-specific information, ensuring that each transaction is processed with the necessary details, whether it’s during creation, processing, or displaying the payment form.
+
+```python
+class MyPaymentProvider(odoo.addons.payment.models.payment_transaction.PaymentTransaction):
+
+    def _get_specific_processing_values(self, processing_values):
+        # Ajouter des valeurs spécifiques au fournisseur
+        return {
+            'amount': 100,
+            'currency': 'USD',
+            'stripe_api_key': 'sk_test_123',
+            'stripe_customer_id': 'cus_ABC123'
+        }
+
+```
+
+#### Managing Notifications and Updates 🔄
+
+Payment transactions often involve `communication` between Odoo and external providers. The `_handle_notification_data` and `_process_notification_data` methods handle these notifications, ensuring the `transaction status` is updated correctly. 
+
+These methods `match` incoming `data` with the corresponding `transaction`, updating its `state` to reflect changes like payment confirmation, refunds, or errors. 
+
+```python
+class PaymentTransaction(models.Model):
+    _inherit = 'payment.transaction'
+
+    def _handle_notification_data(self, provider_code, notification_data):
+        # Find the transaction based on notification data
+        transaction = self._get_tx_from_notification_data(provider_code, notification_data)
+        
+        # If transaction is found, update its state
+        if transaction:
+            # Example of updating the state based on notification data
+            status = notification_data.get('status')
+            if status == 'completed':
+                transaction.state = 'done'
+            elif status == 'pending':
+                transaction.state = 'pending'
+            elif status == 'failed':
+                transaction.state = 'error'
+            else:
+                transaction.state = 'error'
+            
+            # Optionally, update other fields based on notification data
+            transaction.amount = notification_data.get('amount', transaction.amount)
+            transaction.reference = notification_data.get('transaction_id', transaction.reference)
+            
+            # Save the changes to the database
+            transaction._cr.commit()
+
+        return transaction
+
+```
+
+This robust system ensures that transactions are `always in sync` with real-world events.
+
+#### Executing Financial Operations 💳
+
+Transactions can involve various operations, such as capturing payments, issuing refunds, or voiding payments. The methods `_send_capture_request`, `_send_refund_request`, and `_send_void_request` facilitate these actions by sending the necessary API requests to the provider.
+
+```python
+transaction = self.env['payment.transaction'].browse(1)
+
+# capturing payments
+capture_transaction = transaction._send_capture_request(amount_to_capture=50)
+
+# issuing refunds
+refund_transaction = transaction._send_refund_request(amount_to_refund=50)
+
+# voiding payments
+void_transaction = transaction._send_void_request(amount_to_void=50)
+```
+
+These methods ensure that the `financial operations` are executed correctly, whether capturing funds from a customer, returning money, or canceling a transaction.
+
+#### Updating Transaction States 🚥
+
+Throughout their lifecycle, transactions go through different states, like pending, authorized, or canceled. 
+
+Methods such as `_set_authorized`, `_set_done`, `_set_canceled`, `_set_error`, and `_set_pending` manage these transitions. 
+
+```python
+transactions = self.env['payment.transaction'].browse([1, 2, 3])
+
+# authorize transaction
+transactions._set_authorized(state_message="Autorisation manuelle")
+
+# Cancel transaction
+transactions._set_canceled(state_message="Paiement annulé par le client")
+
+
+```
+
+These methods `update` the transaction’s `state` based on specific conditions, ensuring that each transaction reflects its current status accurately.
+
+### Conclusion 🎯
+
+In Odoo 17, managing `Payment Transactions` involves a complex yet well-organized system of methods and processes. 
+
+By leveraging these tools, developers can ensure that transactions are accurately tracked, processed, and managed. 
+
+This chapter highlights the importance of maintaining a reliable and transparent payment system, which is crucial for building trust and efficiency in financial operations. 🚀
