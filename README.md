@@ -1103,21 +1103,26 @@ Let's break down these fields and their widgets in simple terms. 🛠️
     - Widgets include Button and Toggle.
 
 10. **Selection (selection) ⭐ 📻**:
+
 - Choose from predefined values.
 - Widgets include Badge, Badges, Priority (star rating), and Radio buttons.
 
 11. **Priority (selection) ⭐⭐⭐**:
+
 - Three-star rating system, similar to a selection field with predefined values.
 
 12. **File (binary) 📂 🖼️ 📄**:
+
 - Upload any file or sign a form.
 - Widgets include Image, PDF Viewer, and Sign.
 
 13. **Image (binary) 🖼️**:
+
 - Upload and display images.
 - A specific type of File field.
 
 14. **Sign (binary) ✍️**:
+
 - Electronically sign a form.
 - A specific type of File field.
 
@@ -2603,18 +2608,20 @@ company.
 
 ```python
     def action_sold_property(self):
-    # Call the super method to perform the default action_sold_property logic
-    result = super().action_sold_property()
 
-    # Ensure the current user has access rights to update properties
-    self.check_access_rights('write')
-    self.check_access_rule('write')
 
-    ...
+# Call the super method to perform the default action_sold_property logic
+result = super().action_sold_property()
 
-    self.env['account.move'].sudo().create(move_values)
+# Ensure the current user has access rights to update properties
+self.check_access_rights('write')
+self.check_access_rule('write')
 
-    return result
+...
+
+self.env['account.move'].sudo().create(move_values)
+
+return result
 ```
 
 **Example Multi-Company Rule**:
@@ -3358,17 +3365,20 @@ This enhances the payment experience, contributing to a secure and reliable paym
 
 ### Chapter 4: Payment Transaction ⚙️
 
-Continuing our journey through Odoo 17, we dive into the mechanics of `Payment Transactions`, a crucial aspect of handling financial operations. 
+Continuing our journey through Odoo 17, we dive into the mechanics of `Payment Transactions`, a crucial aspect of
+handling financial operations.
 
-These transactions form the backbone of `payment systems`, ensuring every financial action is recorded, processed, and tracked accurately.
+These transactions form the backbone of `payment systems`, ensuring every financial action is recorded, processed, and
+tracked accurately.
 
 #### Creating Unique Transaction References 🔖
 
-In Odoo, each transaction needs a `unique identifier`, known as a `reference`. 
+In Odoo, each transaction needs a `unique identifier`, known as a `reference`.
 
-The `_compute_reference` method generates these references by combining a prefix, a separator, and a sequence number. 
+The `_compute_reference` method generates these references by combining a prefix, a separator, and a sequence number.
 
-If no custom prefix is provided, Odoo generates one using `_compute_reference_prefix`, which may include transaction details like invoice IDs. 
+If no custom prefix is provided, Odoo generates one using `_compute_reference_prefix`, which may include transaction
+details like invoice IDs.
 
 ```python
 class MyPaymentProvider(odoo.addons.payment.models.payment_transaction.PaymentTransaction):
@@ -3381,11 +3391,15 @@ class MyPaymentProvider(odoo.addons.payment.models.payment_transaction.PaymentTr
         return f"INV-{invoice_number}"
 
 ```
-This meticulous process guarantees that every transaction is uniquely identifiable, even if multiple transactions share similar details.
+
+This meticulous process guarantees that every transaction is uniquely identifiable, even if multiple transactions share
+similar details.
 
 #### Post-Processing Transactions 📊
 
-After a transaction, it’s essential to summarize and display its status clearly. The `_get_post_processing_values` method collects relevant data, such as the provider’s name, the transaction amount, and its current state (e.g., pending, done, or canceled). 
+After a transaction, it’s essential to summarize and display its status clearly. The `_get_post_processing_values`
+method collects relevant data, such as the provider’s name, the transaction amount, and its current state (e.g.,
+pending, done, or canceled).
 
 ```python
 {
@@ -3403,13 +3417,17 @@ After a transaction, it’s essential to summarize and display its status clearl
 
 ```
 
-Providers can `customize` this data, ensuring that users receive the most accurate and relevant information. This transparency helps in managing transactions effectively and addressing any issues that might arise.
+Providers can `customize` this data, ensuring that users receive the most accurate and relevant information. This
+transparency helps in managing transactions effectively and addressing any issues that might arise.
 
 #### Tailoring Transaction Details ✏️
 
-Transactions often require specific details based on the provider’s requirements. The methods `_get_specific_create_values`, `_get_specific_processing_values`, and `_get_specific_rendering_values` allow for this customization. 
+Transactions often require specific details based on the provider’s requirements. The
+methods `_get_specific_create_values`, `_get_specific_processing_values`, and `_get_specific_rendering_values` allow for
+this customization.
 
-These methods can be overridden to add provider-specific information, ensuring that each transaction is processed with the necessary details, whether it’s during creation, processing, or displaying the payment form.
+These methods can be overridden to add provider-specific information, ensuring that each transaction is processed with
+the necessary details, whether it’s during creation, processing, or displaying the payment form.
 
 ```python
 class MyPaymentProvider(odoo.addons.payment.models.payment_transaction.PaymentTransaction):
@@ -3427,9 +3445,12 @@ class MyPaymentProvider(odoo.addons.payment.models.payment_transaction.PaymentTr
 
 #### Managing Notifications and Updates 🔄
 
-Payment transactions often involve `communication` between Odoo and external providers. The `_handle_notification_data` and `_process_notification_data` methods handle these notifications, ensuring the `transaction status` is updated correctly. 
+Payment transactions often involve `communication` between Odoo and external providers. The `_handle_notification_data`
+and `_process_notification_data` methods handle these notifications, ensuring the `transaction status` is updated
+correctly.
 
-These methods `match` incoming `data` with the corresponding `transaction`, updating its `state` to reflect changes like payment confirmation, refunds, or errors. 
+These methods `match` incoming `data` with the corresponding `transaction`, updating its `state` to reflect changes like
+payment confirmation, refunds, or errors.
 
 ```python
 class PaymentTransaction(models.Model):
@@ -3438,7 +3459,7 @@ class PaymentTransaction(models.Model):
     def _handle_notification_data(self, provider_code, notification_data):
         # Find the transaction based on notification data
         transaction = self._get_tx_from_notification_data(provider_code, notification_data)
-        
+
         # If transaction is found, update its state
         if transaction:
             # Example of updating the state based on notification data
@@ -3451,11 +3472,11 @@ class PaymentTransaction(models.Model):
                 transaction.state = 'error'
             else:
                 transaction.state = 'error'
-            
+
             # Optionally, update other fields based on notification data
             transaction.amount = notification_data.get('amount', transaction.amount)
             transaction.reference = notification_data.get('transaction_id', transaction.reference)
-            
+
             # Save the changes to the database
             transaction._cr.commit()
 
@@ -3467,7 +3488,9 @@ This robust system ensures that transactions are `always in sync` with real-worl
 
 #### Executing Financial Operations 💳
 
-Transactions can involve various operations, such as capturing payments, issuing refunds, or voiding payments. The methods `_send_capture_request`, `_send_refund_request`, and `_send_void_request` facilitate these actions by sending the necessary API requests to the provider.
+Transactions can involve various operations, such as capturing payments, issuing refunds, or voiding payments. The
+methods `_send_capture_request`, `_send_refund_request`, and `_send_void_request` facilitate these actions by sending
+the necessary API requests to the provider.
 
 ```python
 transaction = self.env['payment.transaction'].browse(1)
@@ -3482,13 +3505,15 @@ refund_transaction = transaction._send_refund_request(amount_to_refund=50)
 void_transaction = transaction._send_void_request(amount_to_void=50)
 ```
 
-These methods ensure that the `financial operations` are executed correctly, whether capturing funds from a customer, returning money, or canceling a transaction.
+These methods ensure that the `financial operations` are executed correctly, whether capturing funds from a customer,
+returning money, or canceling a transaction.
 
 #### Updating Transaction States 🚥
 
-Throughout their lifecycle, transactions go through different states, like pending, authorized, or canceled. 
+Throughout their lifecycle, transactions go through different states, like pending, authorized, or canceled.
 
-Methods such as `_set_authorized`, `_set_done`, `_set_canceled`, `_set_error`, and `_set_pending` manage these transitions. 
+Methods such as `_set_authorized`, `_set_done`, `_set_canceled`, `_set_error`, and `_set_pending` manage these
+transitions.
 
 ```python
 transactions = self.env['payment.transaction'].browse([1, 2, 3])
@@ -3502,12 +3527,14 @@ transactions._set_canceled(state_message="Paiement annulé par le client")
 
 ```
 
-These methods `update` the transaction’s `state` based on specific conditions, ensuring that each transaction reflects its current status accurately.
+These methods `update` the transaction’s `state` based on specific conditions, ensuring that each transaction reflects
+its current status accurately.
 
 ### Conclusion 🎯
 
-In Odoo 17, managing `Payment Transactions` involves a complex yet well-organized system of methods and processes. 
+In Odoo 17, managing `Payment Transactions` involves a complex yet well-organized system of methods and processes.
 
-By leveraging these tools, developers can ensure that transactions are accurately tracked, processed, and managed. 
+By leveraging these tools, developers can ensure that transactions are accurately tracked, processed, and managed.
 
-This chapter highlights the importance of maintaining a reliable and transparent payment system, which is crucial for building trust and efficiency in financial operations. 🚀
+This chapter highlights the importance of maintaining a reliable and transparent payment system, which is crucial for
+building trust and efficiency in financial operations. 🚀
